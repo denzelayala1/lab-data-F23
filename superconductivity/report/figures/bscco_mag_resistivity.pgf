@@ -1971,7 +1971,7 @@
 \definecolor{textcolor}{rgb}{0.150000,0.150000,0.150000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=4.100000in,y=4.923333in,,base]{\color{textcolor}\rmfamily\fontsize{12.000000}{14.400000}\selectfont Magnetic Field Dependent Resistvity of Bi\(\displaystyle _2\)Sr\(\displaystyle _2\)CaCu\(\displaystyle _2\)O\(\displaystyle _8\)}%
+\pgftext[x=4.100000in,y=4.923333in,,base]{\color{textcolor}\rmfamily\fontsize{12.000000}{14.400000}\selectfont Magnetic Field Dependent Resistivity of Bi\(\displaystyle _2\)Sr\(\displaystyle _2\)CaCu\(\displaystyle _2\)O\(\displaystyle _8\)}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%

@@ -14,6 +14,7 @@ border=5pt
 \usepackage{subcaption}
 \usepackage{lipsum}
 \usepackage{tikz}
+\usepackage{pgf}
 
 \usetikzlibrary{arrows}
 
@@ -49,4 +50,13 @@ State University of New York at Buffalo\\Department of Physics
 \maketitle
 
 \section*{\label{sec:intro}Introduction \\\lowercase{to} Superconductivity}
+
+\lipsum
+\begin{figure}[h]
+  \begin{tikzpicture}
+    \centering
+    \input{figures/lockin_frequency_dependence.pgf}
+  \end{tikzpicture}
+\end{figure}
+\lipsum
 \end{document}
