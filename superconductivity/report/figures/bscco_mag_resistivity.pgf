@@ -2459,7 +2459,7 @@
 \definecolor{textcolor}{rgb}{0.150000,0.150000,0.150000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=2.006608in,y=3.766689in,left,base]{\color{textcolor}\rmfamily\fontsize{20.000000}{24.000000}\selectfont B = 8 mT}%
+\pgftext[x=2.006608in,y=3.766689in,left,base]{\color{textcolor}\rmfamily\fontsize{20.000000}{24.000000}\selectfont B = 122 mT}%
 \end{pgfscope}%
 \end{pgfpicture}%
 \makeatother%
