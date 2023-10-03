@@ -15,8 +15,13 @@ border=5pt
 \usepackage{lipsum}
 \usepackage{tikz}
 \usepackage{pgf}
-
+\usepackage{circuitikz}
+\usepackage{multirow}
 \usetikzlibrary{arrows}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1\,\delimsize\vert\,\mathopen{}#2}
 
 \AtBeginDocument{\let\latexlabel\label}
 
@@ -32,6 +37,7 @@ border=5pt
  \email{Denzelay@buffalo.edu}
  \altaffiliation[Also at ]{University of Vermont}%Lines break automatically or can be forced with \\
 \author{Mars Anderson}
+ \email{anderse3@buffalo.edu}
 \author{Serdar K. Gozpinar}
 
 \affiliation{%
@@ -45,18 +51,375 @@ State University of New York at Buffalo\\Department of Physics
 
 \begin{abstract}
 
-  Ferroic materials, exhibit switchable long range ordered states that are energetically equivalent. This paper explores the characteristics and properties of ferro- magnetic, elastic, and electric phases with the goal of combining existing ferroics into multiferroics. With  the increasing spread of information technologies, magnetoelectric multiferroics hold great potential for revolutionizing modern electronics with low-power consumption and high-switch-rate capabilities. The fundamentally different chemical species required for ferroelectrics and ferromagnets makes their synthesis elusive but various approaches, such as multicomponent composites and structurally driven multiferroics, have been explored and successfully overcome this challenge.
+\lipsum[1]
+
 \end{abstract}
 \maketitle
 
 \section*{\label{sec:intro}Introduction \\\lowercase{to} Superconductivity}
 
-\lipsum
-\begin{figure}[h]
-  \begin{tikzpicture}
-    \centering
-    \input{figures/lockin_frequency_dependence.pgf}
-  \end{tikzpicture}
+Superconductors are technologically critical materials. Their most wide spread use is to create large magnetic fields at a minimal energy cost due to their extremely high conductivity. This has found applications across multiple economic sectors such as the medical field, fundamental physics research, energy production, next-generation computers, and various quantum devices.  In the medical field, Magnetic Resonance Imaging (MRI) machines use large magnetic fields in conjunction with radio waves to perturb the hydrogen in your body's water to produce images of your body. The contrast is due to slight differences in the electronic environments of different tissues. In particle accelerators the superconducting magnets are used to steer the fundamental particles that hold the secrets of the universe. This magnetic steering has also been used to contain plasma in fusion reactors which are intended to produce energy in the future.
+
+\begin{figure}[b]
+  \includegraphics[width=0.4 \textwidth]{figures/sc_tech.png}
+  \caption{Cartoon representation of technology that use superconductors.~\cite{DoScience}}
+  \label{fig:sc_tech}
 \end{figure}
-\lipsum
+
+Superconductivity is an electronic phase of matter similar to how  gas, liquid and solid are physical phases of mater. However rather than the atomic arrangement undergoing a transition, the electrons are the participants. This phase transition can be of first or second order depending on the type of superconductivity. Over all the transition is the result of the system trying to minimize a Ginzburg-Landau (GL) free energy. Herein we set out to illuminate this phase transition using a van der Pauw measurement configuration to measure the resistivity of two high temperature superconductors. 
+
+
+
+  \subsection*{Phenomenology of Superconductivity}
+
+    The two defining hallmarks of a superconductor are perfect conductivity and perfect diamagnetism.\cite{tinkham}  When in the superconducting phase a material's resistivity disappears and current is able to flow freely nearly indefinitely.\cite{tinkham} Lower bounds on the characteristic decay time established by nuclear resonance is on the order of $10^5$ years, with some materials boasting possibility for unchanging fields or currents on times scales of $10^{10{^{10}}}$ years, (paraphrased from Tinkham).\cite{tinkham} 
+
+    \begin{figure}[t]
+      \includegraphics[width=0.4 \textwidth]{figures/pc_sc.png}
+      \caption{Schematic diagram of a super and perfect conductor in a magnetic field in the normal phase (a), the perfect conducting phase (b), and after the removal of the applied magnetic field but still in the  perfect conducting phase (c).}
+      \label{fig:sc_pc}
+    \end{figure}
+
+
+    The second characteristic of perfect diamagnetism is what separates a superconductor from a perfect conductor. While both a super and perfect conductor exclude magnetic field from entering the material, Meissner and Ochsenfeld showed that as a superconductor is cooled through its $T_c$ it expels any field that was originally in the normal sample.~\cite{MnO1933,tinkham} This expulsion is unique as a perfect conductor would trap flux in the material as seen in fig \ref{fig:sc_pc}c. Furthermore the reversibility of this \textbf{Meissner effect} implies that thermodynamic free energy goes into expelling the fields, and can be overwhelmed. This thermodynamic critical field  $H_c$ is related to the difference in the Helmholtz free energy per unit volume of the normal ($f_n$) and superconducting ($f_s$) states (eq \ref{eq:Hc}).
+    
+    \begin{gather}
+      f_n(T) - f_s(T) = \frac{H_c^2(T)}{8\pi}
+      \label{eq:Hc} 
+    \end{gather}
+
+    The two hallmarks have corresponding phenomenological parameters or characteristic lengths that describe them. In the case of the perfect diamagnetism, the London penetration depth ($\lambda_L$) as discovered by the London brothers in 1935 is indicative of the skin depth associated with superconductors. Pippard introduced the second parameter of coherence length ($\xi_0$) when trying to generalize the London  equations (eqs \ref{eq:LCurrent} -- \ref{eq:le2}) which describes the properties of supercurrent.~\cite{tinkham, pippard}
+
+    \begin{gather}
+      \mathbf{J}_s = \frac{-\mathbf{A}}{\Lambda c}
+      \label{eq:LCurrent}\\
+      \mathbf{E} = \frac{\partial}{\partial t}(\Lambda \mathbf{J}_s)  
+      \label{eq:le1} \\
+      \mathbf{B} = -c ~\nabla \times (\Lambda \mathbf{J}_s)  
+      \label{eq:le2} \\
+      \Lambda = \frac{4\pi \lambda^2}{c^2}  = \frac{m}{n_s e^2}
+    \end{gather}
+
+    The London brothers chose a special gauge (eq \ref{eq:LCurrent}) that insured the vector potential ($\mathbf{A}$) could be interpreted as a current density on the surface of the superconductor. The gauge required the vector potential is zero in the bulk of the superconductor, there is no normal components to the surface ($\hat{\mathbf{n}}\cdot \mathbf{A} = 0$), and no sources or sinks $\nabla \cdot \mathbf{A} = 0$ in the superconductor. 
+
+    Equation \ref{eq:le1} is the equation that describes the perfect conductivity. In a regular conductor an applied electric field ($\mathbf{E}$) provides the energy needed to sustain a current ($\mathbf{J}$), in the material as Ohm's law indicates that any current would meet a resistance that dissipates the energy as heat. However, in super conductors the lack of resistance makes it so the electric field accelerates the superconducting electrons. 
+ 
+
+    Ginzburg-Landau
+
+    \begin{gather}
+      n_s = |\psi(x)|^2 \\
+      f = f_{n0} + \alpha |\psi|^2 + \frac{\beta}{2}|\psi|^4 + \nonumber \\ \frac{1}{2m^*} \lvert\left(\frac{\hbar}{i}\nabla - \frac{e^*}{c}\mathbf{A}\psi\right)\rvert^2 + \frac{h^2}{8\pi} \\
+      f_s - f_n = \alpha |\psi|^2 + \frac{1}{2}\beta|\psi|^4
+    \end{gather}
+
+
+    
+    \begin{figure}[t]
+      \includegraphics[width=0.5 \textwidth]{figures/gl_free_E.png}
+      \caption{Ginzburg-Landau free energy functions for $T>T_c$ (left) and $T<T_c$ (right). Dots indicate equilibrium positions.~\cite{tinkham}}
+      \label{fig:sc_pc}
+    \end{figure}
+
+
+    TODO: 
+    explain london equations, coherence length, GL equations. Introduce types of superconductors and our materials. Introduce and explain measurement technique.
+    We are using YBCO and BSCCO both of which are cuperates, so discuss the differences in them.\cite{Cohen92} 
+    
+    Type 1 vs 2 super conductors. 
+    
+    Measurement technique van Der Pauw configuration and why it works. \cite{tinkham}
+
+
+    \begin{figure}[h]
+      \includegraphics[width=0.35 \textwidth]{figures/cryostat.png}
+      \caption{Schematic of the double jacket cryostat surrounded by electromagnets.}
+      \label{fig:cryostat}
+    \end{figure}
+
+\section*{Experimental }
+
+
+    The sample was placed in a double jacket cryostat (fig \ref{fig:cryostat}). The inner layer is sealed using the sample probe and was connected to a  two-stage rotary vane vacuum pump system to remove the atmospheric gases. It was also connected to a helium line to replace the displaced gas. This inner jacket is the heat exchange layer between the cryogen of choice and the sample. The outer layer was filled with liquid nitrogen. When preparing your own samples remove and replace the atmospheric gas from the inner chamber BEFORE adding liquid N$_2$. Oxygen can condense in the inner jacket and cause explosions. 
+
+
+    \begin{figure}[b]
+      \includegraphics[width=0.5 \textwidth]{figures/lakeshore.png}
+      \caption{Front panel of Lakeshore 330 temperature controller. PID values used were 250, 50, 0 respectively.}
+      \label{fig:lakeshore}
+    \end{figure}
+
+    
+    The temperature of the exchange gas was controlled using a Lakeshore 330 Autotuning temperature controller (fig \ref{fig:lakeshore}). It only provides heat to the environment through heater coils wrapped in white teflon and attached to the sample probe. Any cooling was accomplished by allowing the liquid nitrogen to drop the temperature of the exchange gas. This controller uses a Proportional-Integral-Derivative (PID) feedback control loop. The P, I, D, parameters used were 250, 50, and 0 respectively. This component continuously  calculates the difference between current temperature and the set point. The P-parameter multiplies the error directly. The I-parameter takes an integral over a time interval and multiplies that against the error. Minimizing this integral leads to a closer match between the set point and sample temperature. Finally the D-parameter multiplies the rate of change in error and controls how ``rapidly'' the set point is approached. Too high of a D-parameter results in overshooting the temperature. The sample temperature is measured using a temperature sensitive diode mounted on the back of the sample holder. The temperature controller sends a positive polarity $\mu$A current towards the diode resulting a voltage difference across the diode. This voltage is directly proportional to the sample temperature. 
+    
+    \begin{figure}[b]
+      \includegraphics[width=0.25 \textwidth]{figures/sampleHolder.png}
+      \caption{A sample (in black) mounted on the copper sample holder. The heating coils are under the white teflon.}
+      \label{fig:lakeshore}
+    \end{figure}
+
+
+    The samples were approximately 12 mm in diameter and 2 mm thick. Thin copper wire were bonded to the edges of the sample as required by the Van der Pauw method with a carbon-based conductive paste. The numbers correspond to the wires that will connect to the lock-in amplifier. Take care not to touch the sample directly as the oils and contaminants on your skin can affect the readings. 
+
+TODO: Cryostat and sample probe, vacuum system, temperature controler, lockin amplifier (LA), electromagnets. First discribe the details of the instrument we are using. Then go into the procedure including best preactices for sample preperation. 
+To test the variation of the time constant we raised and lowered the frequency the LA was tuned too. 
+  
+
+  \begin{center}
+  \begin{circuitikz}
+    \draw 
+      (0,0) to [short]   (0.5,0)
+      to [V,l_=$V_{AC}$] (1, 0)
+      to [short]         (1.5, 0)
+      to [short,-*]      (1.5, 1)
+      to [short, -*]     (1.5, 2)
+      to [short]         (1.5, 3)
+      to [short]         (1, 3)
+      to [vsourcesin]    (0.5, 3)
+      to [short]         (0.5, 3)
+      to [short]         (0, 3)
+      to [short,-*]      (0, 2)
+      to [short, -*]     (0, 1);
+      
+    \draw 
+      (0,0) to [short,-*]      (0,1)
+      to [short, l_=3]         (1.5,1)
+      to [short, l_=1]         (1.5,2)
+      to [short, l_=2]         (0,2);
+  \end{circuitikz}
+  \end{center}
+
+
+\section*{Results \lowercase{and} Discussion }
+
+  \subsection*{Lock-in Amplifier Properties}
+
+    When varying the LA's  sensitivity the most significant digit changed. At higher sensitivities the number of visible digits decreased but the values were more precise displaying a value of $XX.X\underbar{X} ~\mu V$. changed the  ``response time'' of the instrument. At low time constants the values changed rapidly with the changing reference frequency. However, the values fluctuated constantly and were not as stable. This lack of stability came from all sort of signal noise. In contrast when the time constant was set to (3x1 s) the displayed values changed slowly but the final value was relatively stable. This stability came from the time averaging of the noise during the data collection. As the majority of the input noise was random its average value is zero and its variance is constant. 
+
+
+    \begin{figure}[h]
+    
+      \resizebox{0.45\textwidth}{!}{\input{figures/lockin_frequency_dependence.pgf}}
+      \caption{this is a test of the captions to se if  HOLDER}
+      \label{fig:freq_dep}
+  
+    \end{figure}
+
+    The measured voltage during the frequency sweep was mostly stable at a value of $16.8(5) ~\mu V$. However, figure \ref{fig:freq_dep} shows a large deviation at $f_n$ = 60, 180, and 300 Hz. This is a systematic error that arises from the electrical outlets that we get our power from. The power supplied to the LA is AC current at 60Hz and the deviations at 180 and 300Hz are the overtones of this base frequency.\cite{harmonics} They follow the pattern of being amplified every odd-multiple of the base frequency (eq. \ref{eq:fn}). The harmonics stem from the current being a sin wave which is generated from the odd terms in series expansion.
+    
+    \begin{gather}
+      f_n = 60(2n+1); ~~{n = 0, 1, 2, \dots}
+      \label{eq:fn} \\
+      \sin(x) = \sum_{n=0}^{\infty} \left(-1\right)^n \frac{x^{2n +1}}{(2n+1)!} \label{eq:sin_taylor}
+    \end{gather}
+    
+
+    \begin{center}
+      \begin{tabular}{ |c|c|c| }
+        \hline
+        Configuration & Voltage ($\mu V$) & Resistance  ($m\Omega$) \\ 
+        \hline
+        \multicolumn{3}{|c|}{BSCCO} \\
+        \hline
+        a & 16.9(5) & 3.4(0)  \\ 
+        \hline
+        b & 12.2(1) & 2.4(2)  \\ 
+        \hline
+        c & 16.9(4) & 3.4(2)  \\ 
+        \hline
+        d & 11.9(9) & 2.4(2)  \\ 
+        \hline
+        \multicolumn{3}{|c|}{YBCO} \\
+        \hline
+        a & 13.8(5) & 3.0(9)  \\ 
+        \hline
+        b & 14.0(0) & 2.4(5)  \\ 
+        \hline
+        c & 12.8(5) & 3.1(3) \\ 
+        \hline
+        d & 15.2(7) & 2.4(7)  \\ 
+        \hline
+      \end{tabular}
+    \end{center}
+    
+    \begin{center}
+      \begin{tabular}{ |c|c|c| }
+        \hline
+        Pair & Ratio & f(R$_i$/ R$_j$) \\
+        \hline
+        \multicolumn{3}{|c|}{BSCCO} \\
+        \hline
+        a-b & 1.405 & 0.99 \\
+        \hline
+        c-b & 1.412 & 0.99 \\
+        \hline
+        c-d & 1.414 & 0.99 \\
+        \hline
+        a-d & 1.406 & 0.99 \\
+        \hline
+        \multicolumn{3}{|c|}{YBCO} \\
+        \hline
+        a-b & 1.259 & 1.00 \\
+        \hline
+        c-b & 1.252 & 1.00 \\
+        \hline
+        c-d & 1.269 & 0.99 \\
+        \hline
+        a-d & 1.277 & 0.99 \\
+        \hline
+      \end{tabular}
+    \end{center}
+    \begin{gather}
+      \rho = \frac{\pi t}{ln2}\frac{R_a}{}
+    \end{gather}
+
+
+  \subsection*{Temperature Dependence}
+
+    As a type-2 superconductor the superconducting phase transition for Bi-2223 is of second order and expected  at $T_c \approx 108~K$.~\cite{bscco_tc} However, our sample began it's transition to the superconducting phase at around 111 K (fig.\ref{fig:bscco_temp}) and ended its transition at 97.5 K. Additionally, rather than being a singular smooth sigmoidal-like curve the resistivity plot has a shelf at around 105 K. This deviation can be explained as largely being from two sources, disorder and multiple chemical phases. In this case disorder specifically refers to lattice displacements and low-density vacancies that result in intra-grain disorder. This is distinct from chemical phase differences which are examples of inter-grain disorder. 
+    
+
+    \begin{figure}[t]
+      \resizebox{0.45\textwidth}{!}{\input{figures/bscco_temp_resistivity.pgf}}
+        \caption{this is a test of the captions to se if  HOLDER}
+        \label{fig:bscco_temp}
+    \end{figure}
+
+    Lets cover the disorder effects first. As cuprates both BSCCO and YBCO undergo superconductor-insulator phase transition (SIT) at their respective $T_c$'s. This type of transition is suspected to have both fermionic~\cite{finkel1994suppression} and bosonic~\cite{fisher1990presence} mechanisms for the suppression of superconductivity.~\cite{Nat_SIT} In the case of fermionic suppression, Cooper pairs are destroyed prior to their formation due to the localization of electrons with increased disorder. In bosonic suppression, Cooper pairs that are formed at the transition become localized due to the disorder thus disrupting their conductivity and maintaining the insulating state. Both of these mechanisms hinge on electrons scattering off lattice distortions.  
+    
+
+    Seemingly in contrast, in 1959 Anderson noted that the $T_c$ of most superconductors is largely insensitive to physical and chemical impurities due to Cooper pairs being formed from time-reversible eigenstates.~\cite{anderson1959theory} In summery, boson formation is dependent on the averaging of scattered one-electron states which is identical to the average of unscattered plane waves if the spins were left unchanged, details in appendix. However, the introduction of magnetic impurities breaks this time-reversal symmetry. Atomic oxygen fills this role as cuprates experience oxygen vacancies and enrichment as a source of intra-grain disorder, and it has an effective magnetic moment of $1.71 \mu B$,~\cite{oxygenMag}. However, this type of defect in a ``homogenous'' system would result in the broadening of the $T_c$ range (both up and down) but not necessarily the aforementioned shelf. 
+
+    The shelf most likely stems from the existence of domains comprised of different stoichiometric ratios that have aggregated. Most ceramics exist as a solid solution that include vacancies throughout the material. This is normally spread evenly through a sample but over the course of heating and cooling cycles vacancies and defects can cluster through dislocation creep in thus forming these larger domains. In the case of BSCCO the generalized formula is $Bi_2Sr_2Ca_{n-1}Cu_nO_{2n+4+x}$ where domains would depend on not only the oxygen vacancies (x) but also the ratios of Ca and Cu (n). These different stoichio-tropes (akin to allotropes) can have vastly different $T_c$ ranging from 33--108 K. This is why the resistivity initially drops at 110K and slightly plateaus before dropping again at roughly 104K. These $T_c$ might correspond to Bi-2223 at 108K with broadening from disorder and Bi-2234 with $T_c \approx 104~K$.
+    
+    
+  
+    \begin{figure}[t]
+      \resizebox{0.45\textwidth}{!}{\input{figures/ybco_temp_resistivity.pgf}}
+        \caption{this is a test of the captions to se if  HOLDER}
+        \label{fig:ybco_temp}
+    \end{figure}
+
+    In contrast to before, YBCO is a type-1 superconductor with a $T_c \approx 90~K$, so its SIT should be first order and sharp like a step function. This is largely reflected in the resistivity plot as its transition begins at 92 K and is complete at 90 K. However there is a spike in the resistivity \textit{after} the phase transition (fig \ref{fig:ybco_temp}). One possible source for this error is that a contact wasn't perfect, thus the residual resistivity that we normally see from the carbon paste was accented. Another possible source is that the setting on the LA were incorrect when taking those data points. 
+
+
+  \subsection*{Applied Magnetic Field}
+
+    After establishing a baseline of the phase transition over a large temperature sweep, we limited the temperature range and applied an external magnetic field  to see its influence on the SIT. The expected effect is that phase transition would shift to a lower temperature. 
+
+    \begin{figure}[t]
+      \resizebox{0.45\textwidth}{!}{\input{figures/bscco_mag_resistivity.pgf}}
+        \caption{this is a test of the captions to se if  HOLDER}
+        \label{fig:bscco_mag}
+    \end{figure}
+
+    The expected shift was seen in both samples. However, when taking the measurements for BSCCO the temperature range was  started from the bottom of the unadulterated superconductor temperature range at 97.5 K. Since the magnetic field pushed lowered the transition temperature we did not see the complete transition. The data points below 95K were taken on a separate day with larger temperature steps between readings and some overlap with the previous spectrum. The overlap points were plotted as individual points rather than averaging them into the previous measurements to highlight the two sources of error this introduced. Here the onset $T_c$ is at 111 K and the end of the transition range is at 84.5 K. 
+    
+    The sample underwent a cool-heat-cool cycle thus slightly changing the read values. This is reflected in the vertical steps at 97.5 and 100 K which have readings on both days. The lower values are from the second day. Additionally the large step-size has reduced resolution to resolve features in the spectrum. Due to this lack of resolution it isn't possible to determine if the step feature seen in the $B=0mT$ plot is still present in the $B=8mT$.
+
+
+    \begin{figure}[t]
+      \resizebox{0.45\textwidth}{!}{\input{figures/ybco_mag_resistivity.pgf}}
+        \caption{this is a test of the captions to se if  HOLDER}
+        \label{fig:ybco_mag}
+    \end{figure}
+  
+    For YBCO the shift towards lower temperature is clearly visible. Notably the shift is less drastic than in the case of the type-2 superconductor. Here the $T_c$ onset is still at 92 K but the transition ends at 85 K. Additionally, the resistivity plot doesn't show the same spike that was present in the previous plot. As in the BSCCO case these measurements were taken on different days so there was a thermal cycle between the measurements. This difference probably wouldn't account for the large spike seen on the day before. The only way it would is if during the cool-heat-cool cycle the carbon conductive paste reset itself and made better contact on the second cooling.
+    
+    The discrepancy in the shift values can be explained by the london penetration depth. In type-1 superconductors the magnetic field is nearly entirely expelled as the transition begins. The stronger the applied field the more energy that must go into expelling the field thus shifting the entire curve towards 0 K. However in type-2 superconductors an intermediate stage that contains normal and superconducting phases can exist. This  makes the transition take place over a larger temperature range as there is an energetically favorable configuration that preserves flux.
+  
+ 
+
+
+\section*{Summary \lowercase{and} Conclusion}
+
+
+\lipsum[2]
+
+
+
+\section*{Appendix}
+The general form of the single electron wave function in the presence of scatterers is given by $ \psi_{n\sigma}$, where $\sigma$ is the spin index.
+    
+    \begin{gather}
+      \psi_{n\sigma} = \sum_{k}\braket{n}{k} \phi_{k\sigma}
+      \label{eq:scatE}\\
+      \left(\psi_{n\sigma}\right)^* = \sum_{k}\braket{n}{k}^*\phi_{-k,-\sigma}
+      \label{eq:tscatE}
+    \end{gather}
+
+    where $\phi_{k\sigma}$ are the Bloch waves, $\braket{n}{k}$ is the scattering unitary transformation and equation \ref{eq:tscatE} is the time-reversed wave function. When considering the phonon mediated electron interaction its important to note that this is a second order interaction between the scattered states NOT the initial plane wave states. Thus when using second order perturbation theory the interaction strength is dependent on the scattered energy ($E_n$) rather than the plane wave energies. 
+
+    \begin{gather}
+      H_{Cooper Pair} = -\sum_{n, n'} V_{n, n'} c_n^*c_{-n}^*c_{-n}c_{n} \\
+      V_{n, n'} = \sum_{k, k'}\frac{|\braket{n}{k}|^2|\braket{n'}{k'}|^2|M_{k-k'}|^2\hbar\omega_{k-k'}}{(\hbar\omega_{k-k'})^2 - (E_n - E_{n'})^2}
+    \end{gather}
+
+
+
+    \begin{center}
+      \begin{tabular}{ |c|c|c| }
+        \hline
+        \multicolumn{3}{|c|}{BSCCO} \\
+        \hline
+        Configuration & Voltage ($\mu V$) & Resistance  ($m\Omega$) \\ 
+        \hline
+        a & 16.9(5) & 3.4(0)  \\ 
+        \hline
+        b & 12.2(1) & 2.4(2)  \\ 
+        \hline
+        c & 16.9(4) & 3.4(2)  \\ 
+        \hline
+        d & 11.9(9) & 2.4(2)  \\ 
+        \hline
+      \end{tabular}
+    \end{center}
+
+    \begin{center}
+        \begin{tabular}{ |c|c|c| }
+        \hline
+        \multicolumn{3}{|c|}{YBCO} \\
+        \hline
+        Configuration & Voltage ($\mu V$) & Resistance  ($m\Omega$) \\ 
+        \hline
+        a & 13.8(5) & 3.0(9)  \\ 
+        \hline
+        b & 14.0(0) & 2.4(5)  \\ 
+        \hline
+        c & 12.8(5) & 3.1(3) \\ 
+        \hline
+        d & 15.2(7) & 2.4(7)  \\ 
+        \hline
+      \end{tabular}
+    \end{center}
+
+    \begin{center}
+      \begin{tabular}{ |c|c|c| }
+        \hline
+        Configuration & Voltage ($\mu V$) & Resistance  ($m\Omega$) \\ 
+        \hline
+        \multicolumn{3}{|c|}{BSCCO} \\
+        \hline
+        a & 16.9(5) & 3.4(0)  \\ 
+        \hline
+        b & 12.2(1) & 2.4(2)  \\ 
+        \hline
+        c & 16.9(4) & 3.4(2)  \\ 
+        \hline
+        d & 11.9(9) & 2.4(2)  \\ 
+        \hline
+        \multicolumn{3}{|c|}{YBCO} \\
+        \hline
+        a & 13.8(5) & 3.0(9)  \\ 
+        \hline
+        b & 14.0(0) & 2.4(5)  \\ 
+        \hline
+        c & 12.8(5) & 3.1(3) \\ 
+        \hline
+        d & 15.2(7) & 2.4(7)  \\ 
+        \hline
+      \end{tabular}
+    \end{center}
+\bibliography{superconductivity_Denzel_Ayala}{}
+
 \end{document}
