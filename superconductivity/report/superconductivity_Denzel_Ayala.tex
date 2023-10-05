@@ -51,7 +51,7 @@ State University of New York at Buffalo\\Department of Physics
 
 \begin{abstract}
 
-\lipsum[1]
+The resistivity of two cuprates $Bi_2Sr_2Ca_{2}Cu_3O_{10}$ (BSCCO) and $YBa_2Cu_3O_7$ (YBCO) was measured between 80--160 K to identify their critical temperature as superconductors with and without the presence of a static 122 mT magnetic field. The samples were measured using the Van Der Pauw method. Both materials displayed a high temperature superconductivity with BSCCO showing a $ T_c = 105\pm 7 K$ when $B=0 mT$ and $T_c = 98\pm 14 K$ when $B=122 mT$. YBCO had a lower temperature range at $T_c = 91\pm 2 K$ when $B=0 mT$ and $T_c = 88.5\pm 4 K$ when $B=122 mT$.
 
 \end{abstract}
 \maketitle
@@ -101,34 +101,38 @@ Superconductivity is an electronic phase of matter similar to how  gas, liquid a
     \end{gather}
 
     The London brothers chose a special gauge (eq \ref{eq:LCurrent}) that insured the vector potential ($\mathbf{A}$) could be interpreted as a current density on the surface of the superconductor. The gauge required the vector potential is zero in the bulk of the superconductor, there is no normal components to the surface ($\hat{\mathbf{n}}\cdot \mathbf{A} = 0$), and no sources or sinks $\nabla \cdot \mathbf{A} = 0$ in the superconductor. 
-
-    Equation \ref{eq:le1} is the equation that describes the perfect conductivity. In a regular conductor an applied electric field ($\mathbf{E}$) provides the energy needed to sustain a current ($\mathbf{J}$), in the material as Ohm's law indicates that any current would meet a resistance that dissipates the energy as heat. However, in super conductors the lack of resistance makes it so the electric field accelerates the superconducting electrons. 
- 
-
-    Ginzburg-Landau
-
-    \begin{gather}
-      n_s = |\psi(x)|^2 \\
-      f = f_{n0} + \alpha |\psi|^2 + \frac{\beta}{2}|\psi|^4 + \nonumber \\ \frac{1}{2m^*} \lvert\left(\frac{\hbar}{i}\nabla - \frac{e^*}{c}\mathbf{A}\psi\right)\rvert^2 + \frac{h^2}{8\pi} \\
-      f_s - f_n = \alpha |\psi|^2 + \frac{1}{2}\beta|\psi|^4
-    \end{gather}
-
-
     
-    \begin{figure}[t]
-      \includegraphics[width=0.5 \textwidth]{figures/gl_free_E.png}
-      \caption{Ginzburg-Landau free energy functions for $T>T_c$ (left) and $T<T_c$ (right). Dots indicate equilibrium positions.~\cite{tinkham}}
-      \label{fig:sc_pc}
+
+    \begin{figure}
+      \includegraphics[width = 0.45\textwidth]{figures/types.png}
+      \caption{Magnetic field and temperature dependent phase diagrams for type-1 and type-2 super conductors}
+      \label{fig:sctypes}
     \end{figure}
 
+    Equation \ref{eq:le1} is the equation that describes the perfect conductivity. In a regular conductor an applied electric field ($\mathbf{E}$) provides the energy needed to sustain a current ($\mathbf{J}$), in the material as Ohm's law indicates that any current would meet a resistance that dissipates the energy as heat. However, in super conductors the lack of resistance makes it so the electric field accelerates the superconducting electrons. This perfect conductivity is what will be directly in the experiment.
 
-    TODO: 
-    explain london equations, coherence length, GL equations. Introduce types of superconductors and our materials. Introduce and explain measurement technique.
-    We are using YBCO and BSCCO both of which are cuperates, so discuss the differences in them.\cite{Cohen92} 
-    
-    Type 1 vs 2 super conductors. 
-    
-    Measurement technique van Der Pauw configuration and why it works. \cite{tinkham}
+    There are two major classes of superconductors (fig \ref{fig:sctypes}). In type-1 superconductors the superconducting phase transition is of first order so it looks like a step function. In type-2, there is an intermediate state that contains a mix of both normal and superconducting phases. This type of transition takes place over a broader temperature range. In this 
+
+
+    \begin{figure}
+    \begin{subfigure}{0.2\textwidth}
+      \includegraphics[width = 0.5\textwidth]{figures/bsco.png}
+      \caption{$Bi_2Sr_2Ca_{2}Cu_3O_{10}$ }
+      \label{fig:ibsco}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.2\textwidth}
+      \includegraphics[width = \textwidth]{figures/ybco.png}
+      \caption{$YBa_2Cu_3O_7$}
+      \label{fig:iybco}
+    \end{subfigure}
+    \caption{Crystal Structures}
+  \end{figure}
+
+  The two crystals we are working with are cuprates. These ceramics are characterized by the existence of Copper oxides in sheets. The compounds are Bi$_2$Sr$_2$Ca$_{2}$Cu$_3$O$_{10}$ (BSCCO) and YBa$_2$Cu$_3$O$_7$ (YBCO) figures \ref{fig:ibsco}~\&~\ref{fig:iybco} respectively. 
+  
+  These samples were measured using the Van Der Pauw Method. This technique requires that the samples be homogeneously thin, have contacts at outer perimeters of the samples, and have no holes. When taking a measurement current passes in through two of the four contacts on the sample and then exits through the other two (see figure \ref{fig:sample}). This 4-point method is used rather than the 2-point method because any resistance in the contacts or wires can be ignored. This is because only current that exists across the body of the material will produce a signal voltage.
+
 
 
     \begin{figure}[h]
@@ -139,7 +143,7 @@ Superconductivity is an electronic phase of matter similar to how  gas, liquid a
 
 \section*{Experimental }
 
-
+  \subsection*{Equipment}
     The sample was placed in a double jacket cryostat (fig \ref{fig:cryostat}). The inner layer is sealed using the sample probe and was connected to a  two-stage rotary vane vacuum pump system to remove the atmospheric gases. It was also connected to a helium line to replace the displaced gas. This inner jacket is the heat exchange layer between the cryogen of choice and the sample. The outer layer was filled with liquid nitrogen. When preparing your own samples remove and replace the atmospheric gas from the inner chamber BEFORE adding liquid N$_2$. Oxygen can condense in the inner jacket and cause explosions. 
     
     
@@ -155,55 +159,70 @@ Superconductivity is an electronic phase of matter similar to how  gas, liquid a
     
     The temperature of the exchange gas was controlled using a Lakeshore 330 Autotuning temperature controller (fig \ref{fig:lakeshore}). It only provides heat to the environment through heater coils wrapped in white teflon and attached to the sample probe. Any cooling was accomplished by allowing the liquid nitrogen to drop the temperature of the exchange gas. This controller uses a Proportional-Integral-Derivative (PID) feedback control loop. The P, I, D, parameters used were 250, 50, and 0 respectively. This component continuously  calculates the difference between current temperature and the set point. The P-parameter multiplies the error directly. The I-parameter takes an integral over a time interval and multiplies that against the error. Minimizing this integral leads to a closer match between the set point and sample temperature. Finally the D-parameter multiplies the rate of change in error and controls how ``rapidly'' the set point is approached. Too high of a D-parameter results in overshooting the temperature. The sample temperature is measured using a temperature sensitive diode mounted on the back of the sample holder. The temperature controller sends a positive polarity $\mu$A current towards the diode resulting a voltage difference across the diode. This voltage is directly proportional to the sample temperature. 
     
-    \begin{figure}[b]
+    \begin{figure}[t]
       \includegraphics[width=0.25 \textwidth]{figures/sampleHolder.png}
       \caption{A sample (in black) mounted on the copper sample holder. The heating coils are under the white teflon.}
-      \label{fig:lakeshore}
+      \label{fig:sample}
     \end{figure}
 
 
     The samples were approximately 12 mm in diameter and 2 mm thick. Thin copper wire were bonded to the edges of the sample as required by the Van der Pauw method with a carbon-based conductive paste. The numbers correspond to the wires that will connect to the lock-in amplifier. Take care not to touch the sample directly as the oils and contaminants on your skin can affect the readings. 
 
-TODO: lockin amplifier (LA), VdP technique. First discribe the details of the instrument we are using. Then go into the procedure including best practices for sample preparation. 
-To test the variation of the time constant we raised and lowered the frequency the LA was tuned too. 
-  
+    The probe current and signal processing was performed by a Stanford Research Systems Model SR810 Lock-in Amplifier (LA). For most of the experiment the direct current reference frequency was set to 11 Hz with a bias of 5 V. The signal input was set to both channels  with a sensitivity of $1\times 100 \mu V$ and a time constant of $3\times 1 s$. A general schematic of the experimental set up can be seen in figure \ref{fig:schematic}.
 
-  \begin{center}
-  \begin{circuitikz}
-    \draw 
-      (0,0) to [short]   (0.5,0)
-      to [V,l_=$V_{AC}$] (1, 0)
-      to [short]         (1.5, 0)
-      to [short,-*]      (1.5, 1)
-      to [short, -*]     (1.5, 2)
-      to [short]         (1.5, 3)
-      to [short]         (1, 3)
-      to [vsourcesin]    (0.5, 3)
-      to [short]         (0.5, 3)
-      to [short]         (0, 3)
-      to [short,-*]      (0, 2)
-      to [short, -*]     (0, 1);
-      
-    \draw 
-      (0,0) to [short,-*]      (0,1)
-      to [short, l_=3]         (1.5,1)
-      to [short, l_=1]         (1.5,2)
-      to [short, l_=2]         (0,2);
-  \end{circuitikz}
-  \end{center}
+    \begin{figure}[b]
+      \includegraphics[width = 0.45 \textwidth]{figures/schematic.png} 
+      \caption{A schematic of the circuit used for measurement}
+      \label{fig:schematic}
+    \end{figure}
+
+\subsection*{Procedure}
+
+    Prior to sample measurements, we familiarized ourselves with the LA. It began with changing various settings in sequence; insuring to return the setting to its starting point before moving on to the next. The settings included, sensitivity, time constant, signal input, coupling method, phase display and frequency. For the frequency we swept from 30-420 Hz in 30 Hz increments. 
+
+    The samples were equilibrated at 300 K. From there the voltage of sample ($V_S$) was measured using the 4-probe method in the 4 configurations listed in figure \ref{fig:4config}. The sample resistance was calculated using a simple transformation that uses Ohm's Law (eq \ref{eq:ohm}) and takes advantage that the resistance from the load resistor  is significantly larger than the resistance from the sample i.e. $R_L >> R_S$ (eq \ref{eq:resistance}). 
+
+    \begin{gather}
+      V = IR \label{eq:ohm} \\
+      I = \frac{V_{sample}}{R_s} = \frac{V_{generator}}{R_S + R_L} \approx \frac{V_{generator}}{R_L} \label{eq:approx}\\
+      R_s = \frac{V_{sample}}{V_{generator}}R_L \label{eq:resistance}
+    \end{gather}
+
+    \begin{figure}
+      \includegraphics[width= 0.45 \textwidth]{figures/4config.png}
+      \caption{The four possible permutations of the circuit.}
+      \label{fig:4config}
+    \end{figure}
+
+    We measured all the configurations to ensure that ratios between any two configurations was approximately one ($R_{AB,CD} / R_{BC, AD} \approx 1$). If unity is nearly achieved the resistivity calculation can be simplified to equation \ref{eq:resistivity}. Here $t$ is the sample thickness and $f(x)$ is a slowly varying function who's values are listed in the appendix. 
+
+    \begin{gather}
+      \rho = \frac{\pi t}{\ln 2}\frac{R_{AB,CD} + R_{BC, AD}}{2}f\left(\frac{R_{AB,CD}}{R_{BC, AD}}\right) \\
+      \rho = \frac{\pi t}{ln2} R_{AB,CD} \label{eq:resistivity}
+    \end{gather}
+
+
+    All cryogenic measurements followed the same starting procedure. The sample was placed in the sample probe and lowered into the cryostat. Once sealed the sample space was evacuated for 3 minutes. The chamber was backfilled with helium gas for a 10 seconds. Liquid nitrogen was added to the cryogenic jacket and the sample was allowed to stabilize at 80 K.  
+
+    The resistivity of BSCCO was measured from 90--160 K. between 95--112.5 K the step size was 0.5 K so we could resolve the features of the superconducting phase transition. YBCO was also measured  in the same temperature range however the focused range with a step size of 0.5 K was between 85--95 K.  
+
+    Finally the resistivity of both samples was measured under the influence of a magnetic field. The measurements were done by allowing the s ample to stabilize at a temperature taking the voltage and then turning the field on and allowing it to stabilize again. This way the shift in resistivity could be directly attributed to the magnetic field rather than a cool-heat-cool cycle.  
+
+    For BSCCO the temperature range was initially between 97.5--111 K in step sizes of  0.5 K. However, this range was patched to start at 80 K with step sizes of 5 K. In future experiments it is suggested to use a range of 80--111K in step sizes of 0.5 K between measurements. For YBCO, the temperature range was between 87.5--95 with step sizes of 0.5 K.
+
 
 
 \section*{Results \lowercase{and} Discussion }
 
   \subsection*{Lock-in Amplifier Properties}
 
-    When varying the LA's  sensitivity the most significant digit changed. At higher sensitivities the number of visible digits decreased but the values were more precise displaying a value of $XX.X\underbar{X} ~\mu V$. changed the  ``response time'' of the instrument. At low time constants the values changed rapidly with the changing reference frequency. However, the values fluctuated constantly and were not as stable. This lack of stability came from all sort of signal noise. In contrast when the time constant was set to (3x1 s) the displayed values changed slowly but the final value was relatively stable. This stability came from the time averaging of the noise during the data collection. As the majority of the input noise was random its average value is zero and its variance is constant. 
+    When varying the LA's  sensitivity the most significant digit changed. At higher sensitivities the number of visible digits decreased but the values were more precise displaying a value of $XX.X\underbar{X} ~\mu V$. Varying the time constant changed the  ``response time'' of the instrument. At low time constants the values changed rapidly with the changing reference frequency. However, the values fluctuated constantly and were not stable. This lack of stability came from various sources of noise. In contrast when the time constant was set to (3x1 s) the displayed values changed slowly but the final value was relatively stable. This stability came from the time averaging of the noise during the data collection. As the majority of the input noise was random its average value is zero and its variance is constant. 
 
 
     \begin{figure}[h]
     
       \resizebox{0.45\textwidth}{!}{\input{figures/lockin_frequency_dependence.pgf}}
-      \caption{this is a test of the captions to se if  HOLDER}
+      \caption{Voltage signal from the lock-in amplifier as the frequency was varied. There was significantly more noise at odd intervals of 60Hz. }
       \label{fig:freq_dep}
   
     \end{figure}
@@ -218,11 +237,11 @@ To test the variation of the time constant we raised and lowered the frequency t
     
 
     \begin{center}
-      \begin{tabular}{ |c|c|c| }
-        \hline
-        Configuration & Voltage ($\mu V$) & Resistance  ($m\Omega$) \\ 
+      \begin{tabular}[t]{ |c|c|c| }
         \hline
         \multicolumn{3}{|c|}{BSCCO} \\
+        \hline
+        Configuration & Voltage ($\mu V$) & Resistance  ($m\Omega$) \\ 
         \hline
         a & 16.9(5) & 3.4(0)  \\ 
         \hline
@@ -234,6 +253,8 @@ To test the variation of the time constant we raised and lowered the frequency t
         \hline
         \multicolumn{3}{|c|}{YBCO} \\
         \hline
+        Configuration & Voltage ($\mu V$) & Resistance  ($m\Omega$) \\ 
+        \hline
         a & 13.8(5) & 3.0(9)  \\ 
         \hline
         b & 14.0(0) & 2.4(5)  \\ 
@@ -244,37 +265,28 @@ To test the variation of the time constant we raised and lowered the frequency t
         \hline
       \end{tabular}
     \end{center}
-    
+ 
+
+    The measured voltages and resistances of BSCCO and YBCO are in the tables above. The ratios between configurations are in the table below. Because all the ratios were relatively close to 1 and their corresponding function values were close to one we were able to simplify our equation to \ref{eq:resistivity}
+
+
     \begin{center}
-      \begin{tabular}{ |c|c|c| }
+      \begin{tabular}[b]{ |c|c|c|c|c| }
         \hline
-        Pair & Ratio & f(R$_i$/ R$_j$) \\
+         & \multicolumn{2}{|c|}{BSCCO} & \multicolumn{2}{|c|}{YBCO}\\
         \hline
-        \multicolumn{3}{|c|}{BSCCO} \\
+        Pair & Ratio & f(R$_i$/ R$_j$) & Ratio & f(R$_i$/ R$_j$) \\
         \hline
-        a-b & 1.405 & 0.99 \\
+        a-b & 1.405 & 0.99 & 1.259 & 1.00\\
         \hline
-        c-b & 1.412 & 0.99 \\
+        c-b & 1.412 & 0.99 & 1.252 & 1.00\\
         \hline
-        c-d & 1.414 & 0.99 \\
+        c-d & 1.414 & 0.99 & 1.269 & 0.99\\
         \hline
-        a-d & 1.406 & 0.99 \\
-        \hline
-        \multicolumn{3}{|c|}{YBCO} \\
-        \hline
-        a-b & 1.259 & 1.00 \\
-        \hline
-        c-b & 1.252 & 1.00 \\
-        \hline
-        c-d & 1.269 & 0.99 \\
-        \hline
-        a-d & 1.277 & 0.99 \\
+        a-d & 1.406 & 0.99 & 1.277 & 0.99 \\
         \hline
       \end{tabular}
     \end{center}
-    \begin{gather}
-      \rho = \frac{\pi t}{ln2}\frac{R_a}{}
-    \end{gather}
 
 
   \subsection*{Temperature Dependence}
@@ -337,13 +349,41 @@ To test the variation of the time constant we raised and lowered the frequency t
 \section*{Summary \lowercase{and} Conclusion}
 
 
-\lipsum[2]
+    Using a lock-in amplifier we determined that there was large noise contributions at odd multiples of 60 Hz due to the harmonics from the power outlet. Furthermore the 4-point probe method was used to measure the resistivity of BSCCO and YBCO. At 300K the resistivity of BSCCO and YBCO were $61 \pm 10 \mu \Omega \cdot m$ and $58 \pm 7 \mu \Omega \cdot m$ respectively.  
+
+    When taking the temperature dependent resistivity both BSCCO and YBCO underwent an superconductor-insulator transition. This was confirmed by measuring the $T_c$ with and without the influence of a static 122mT magnetic field. For BSCCO the $105\pm 7 K$ when $B=0 mT$ and $98\pm 14 K$ when $B=122 mT$. The broad range confirmed it was a type-2 superconductor. YBCO had a smaller transition temperature range at $91\pm 2 K$ when $B=0 mT$ and $88.5\pm 4 K$ when $B=122 mT$. The broad range confirmed it was a type-2 superconductor.
 
 
+\bibliography{superconductivity_Denzel_Ayala}{}
+
+\pagebreak
+\newpage
 
 \section*{Appendix}
-The general form of the single electron wave function in the presence of scatterers is given by $ \psi_{n\sigma}$, where $\sigma$ is the spin index.
+
     
+ 
+
+Ginzburg-Landau equations
+
+\begin{gather}
+  n_s = |\psi(x)|^2 \\
+  f = f_{n0} + \alpha |\psi|^2 + \frac{\beta}{2}|\psi|^4 + \nonumber \\ \frac{1}{2m^*} \lvert\left(\frac{\hbar}{i}\nabla - \frac{e^*}{c}\mathbf{A}\psi\right)\rvert^2 + \frac{h^2}{8\pi} \\
+  f_s - f_n = \alpha |\psi|^2 + \frac{1}{2}\beta|\psi|^4
+\end{gather}
+
+
+
+\begin{figure}[h]
+  \includegraphics[width=0.5 \textwidth]{figures/gl_free_E.png}
+  \caption{Ginzburg-Landau free energy functions for $T>T_c$ (left) and $T<T_c$ (right). Dots indicate equilibrium positions.~\cite{tinkham}}
+  \label{fig:GL_FE}
+\end{figure}
+
+
+
+The general form of the single electron wave function in the presence of scatterers is given by $ \psi_{n\sigma}$, where $\sigma$ is the spin index.
+
     \begin{gather}
       \psi_{n\sigma} = \sum_{k}\braket{n}{k} \phi_{k\sigma}
       \label{eq:scatE}\\
@@ -357,72 +397,37 @@ The general form of the single electron wave function in the presence of scatter
       H_{Cooper Pair} = -\sum_{n, n'} V_{n, n'} c_n^*c_{-n}^*c_{-n}c_{n} \\
       V_{n, n'} = \sum_{k, k'}\frac{|\braket{n}{k}|^2|\braket{n'}{k'}|^2|M_{k-k'}|^2\hbar\omega_{k-k'}}{(\hbar\omega_{k-k'})^2 - (E_n - E_{n'})^2}
     \end{gather}
+    
+  
 
-
-
-    \begin{center}
-      \begin{tabular}{ |c|c|c| }
-        \hline
-        \multicolumn{3}{|c|}{BSCCO} \\
-        \hline
-        Configuration & Voltage ($\mu V$) & Resistance  ($m\Omega$) \\ 
-        \hline
-        a & 16.9(5) & 3.4(0)  \\ 
-        \hline
-        b & 12.2(1) & 2.4(2)  \\ 
-        \hline
-        c & 16.9(4) & 3.4(2)  \\ 
-        \hline
-        d & 11.9(9) & 2.4(2)  \\ 
-        \hline
-      \end{tabular}
+  \begin{center}
+    \begin{circuitikz}
+      \draw 
+        (0,0) to [short]   (0.5,0)
+        to [V,l_=$V_{AC}$] (1, 0)
+        to [short]         (1.5, 0)
+        to [short,-*]      (1.5, 1)
+        to [short, -*]     (1.5, 2)
+        to [short]         (1.5, 3)
+        to [short]         (1, 3)
+        to [vsourcesin]    (0.5, 3)
+        to [short]         (0.5, 3)
+        to [short]         (0, 3)
+        to [short,-*]      (0, 2)
+        to [short, -*]     (0, 1);
+        
+      \draw 
+        (0,0) to [short,-*]      (0,1)
+        to [short, l_=3]         (1.5,1)
+        to [short, l_=1]         (1.5,2)
+        to [short, l_=2]         (0,2);
+    \end{circuitikz}
     \end{center}
-
-    \begin{center}
-        \begin{tabular}{ |c|c|c| }
-        \hline
-        \multicolumn{3}{|c|}{YBCO} \\
-        \hline
-        Configuration & Voltage ($\mu V$) & Resistance  ($m\Omega$) \\ 
-        \hline
-        a & 13.8(5) & 3.0(9)  \\ 
-        \hline
-        b & 14.0(0) & 2.4(5)  \\ 
-        \hline
-        c & 12.8(5) & 3.1(3) \\ 
-        \hline
-        d & 15.2(7) & 2.4(7)  \\ 
-        \hline
-      \end{tabular}
-    \end{center}
-
-    \begin{center}
-      \begin{tabular}{ |c|c|c| }
-        \hline
-        Configuration & Voltage ($\mu V$) & Resistance  ($m\Omega$) \\ 
-        \hline
-        \multicolumn{3}{|c|}{BSCCO} \\
-        \hline
-        a & 16.9(5) & 3.4(0)  \\ 
-        \hline
-        b & 12.2(1) & 2.4(2)  \\ 
-        \hline
-        c & 16.9(4) & 3.4(2)  \\ 
-        \hline
-        d & 11.9(9) & 2.4(2)  \\ 
-        \hline
-        \multicolumn{3}{|c|}{YBCO} \\
-        \hline
-        a & 13.8(5) & 3.0(9)  \\ 
-        \hline
-        b & 14.0(0) & 2.4(5)  \\ 
-        \hline
-        c & 12.8(5) & 3.1(3) \\ 
-        \hline
-        d & 15.2(7) & 2.4(7)  \\ 
-        \hline
-      \end{tabular}
-    \end{center}
-\bibliography{superconductivity_Denzel_Ayala}{}
+  
+  \clearpage
+\onecolumngrid
+\begin{figure}
+  \includegraphics{figures/funcTable.png}
+\end{figure}
 
 \end{document}
