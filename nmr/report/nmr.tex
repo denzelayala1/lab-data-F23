@@ -1,0 +1,322 @@
+\documentclass[
+reprint,
+amsmath,amssymb,
+aps,
+tikz,
+border=5pt
+]{revtex4-1}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{pgf}
+\usepackage{circuitikz}
+\usepackage{multirow}
+\usetikzlibrary{arrows}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1\,\delimsize\vert\,\mathopen{}#2}
+\AtBeginDocument{\let\latexlabel\label}
+
+
+\begin{document}
+
+
+\preprint{APS/123-QED}
+
+\title{Spin-Lattice and Spin-Spin Relaxation Time Measurements \\ for Mineral Oil and Aqueous CuSO$_{4} \boldsymbol{\cdot} $H$_2$O}
+
+\author{Denzel Ayala} 
+ \email{Denzelay@buffalo.edu}
+ \altaffiliation[Also at ]{University of Vermont}%Lines break automatically or can be forced with \\
+\author{Jonathan DeMaria}
+ \email{jmdemari@buffalo.edu}
+\author{Serdar K. Gozpinar}
+
+\affiliation{%
+State University of New York at Buffalo\\Department of Physics
+}%
+
+%\collaboration{CLEO Collaboration}%\noaffiliation
+
+\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+
+\begin{abstract}
+
+The resistivity of two cuprates $Bi_2Sr_2Ca_{2}Cu_3O_{10}$ (BSCCO) and $YBa_2Cu_3O_7$ (YBCO) was measured between 80--160 K to identify their critical temperature as superconductors with and without the presence of a static 122 mT magnetic field. The samples were measured using the Van Der Pauw method. Both materials displayed a high temperature superconductivity with BSCCO showing a $ T_c = 105\pm 7 K$ when $B=0 mT$ and $T_c = 98\pm 14 K$ when $B=122 mT$. YBCO had a lower temperature range at $T_c = 91\pm 2 K$ when $B=0 mT$ and $T_c = 88.5\pm 4 K$ when $B=122 mT$.
+
+\end{abstract}
+
+\maketitle
+
+\section*{\label{sec:intro}Introduction \\\lowercase{to} NMR}
+
+  This is jhust rankdom test asdfl;kjfdsa ppijls.~\cite{ashcroft76}
+
+
+  Broad intro with applications
+
+  basics of physics i.e. nucelar spin and magnetic field alignment
+
+\subsection*{Pulse Sequences}
+
+\subsubsection*{T1 sequence}
+
+\subsubsection*{spin echo}
+
+\subsubsection*{CP method}
+
+\subsubsection*{MG method}
+
+
+\section*{Experimental }
+
+\subsection*{Equipment}
+
+    \begin{figure}[h]
+      \includegraphics[width=0.4 \textwidth]{figures/block_diagram.png}
+      \caption{Block diagram of experimental set up.}
+      \label{fig:block}
+    \end{figure}
+
+
+    A TeachSpin PS1-A system was used to produce/amplify the pulse sequences, and pickup/amplify the output signal. The signal was then processed/synced and displayed on a Tektronix TBS 1052B Digital Oscilloscope. A simplified block diagram of the system is shown in figure~\ref{fig:block}. The pulse sequence begins at the \textbf{pulse programer}. The exact number of pulses, their widths, and time characteristics are defined in this module. This sends two signals, the first goes to the \textbf{oscilloscope}, the second to the \textbf{RF synthesized oscillator}. This first signal is to let the oscilloscope know when a output signal is coming. The second signal tells the RF synthesized oscillator what pulse sequence to generate. From there the pulse sequence is sent to an \textbf{RF amplifier} and the \textbf{mixer}. The amplifier ensure that a strong enough signal sequence is transmitted to the transmitter Helmholtz coils in the sample chamber such that it influences the nuclear spins. The mixer combines the reference signal with the sample output signal. Before getting to the mixer the sample output signal goes to the \textbf{receiver}. The receiver also sends the output signal to a \textbf{RF amplifier detector}. The mixer and RF amplifier detector both send the signal to the oscilloscope. 
+    
+    The \textbf{pulse programer}
+    
+    
+  
+    
+    
+    P1: block diagram and overview of set usepackage
+    
+    P2: 3module system
+
+    p3: sample holder
+
+    p4: oscilloscope
+
+
+Discribe 3 module system,  oscilloscope. 
+
+
+\subsection*{Procedure}
+
+\subsubsection*{Sample Preparation} 
+    The two chemical species of interest were mineral oil, and CuSO$_{4} \boldsymbol{\cdot} $H$_2$O. The mineral oil was used as purchased from supplier. As CuSO$_{4}$ is a blue crystalline solid it was dissolved in deionized water prior to measurement.Seven sample concentrations of 0.005M, 0.01M, 0.05M, 0.1M, 0.2M 0.5M, \& 1M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O were prepared. 
+
+    Chemical species were loaded into their own glass sample vials. Samples should be approximately cubical (~5mm tall) so that the magnetic field is experienced uniformly in the entire sample. Sample vials are caped with a rubber stop to ensure that concentrations are consistent and there is minimal evaporation or contamination. A rubber o-ring was used to adjust the sample depth inside of the probe. The o-ring was placed at the same height for all sample. 
+
+
+\subsubsection*{Single pulse FID}
+    talk about capaciter, gain, i.e. the stuff that must be done for ALL pulse sequences
+\subsubsection*{Magnetic Field Contours}
+
+    In order to maximize signal amplitude the spatial dependence of the magnetic field was mapped so the sample can be placed in the section with the most uniform field. This was done by finding the resonant frequency at every point in a regular grid. Field uniformity is determined by a region with minimal change in the resonant frequency. As the resonant frequency of the magnet drift over time due to thermal effects it is crucial to take these measurements rapidly. 
+    
+    The direction of the permanent magnetic field $(B_0)$ will be called the z-axis. The sample holder allowed for freedom of movement in the x and y directions. Here the y-axis moved the sample up and down while the x-direction moved the sample perpendicular to the sample table. The values of the y-axis range from $0\ldots20~cm$ and begin at the bottom of the magnet and finish at the top. The x-axis places its zero point at the center of the magnet and ranges from $-10\ldots10~cm$ The field was mapped from $-1~cm \leq x \leq +1~cm$ with step sizes of $0.2~cm$ and from $9~cm \leq y \leq 11~cm$ with step sizes of $0.5~cm$. 
+
+\subsubsection*{Spin-Lattice Relaxation: T1 Sequence}
+    A quick estimate of T$_1$ was acquired. First the spectrometer was set to resonance for a single pulse FID with a large repetition time. The repetition time was slowly lowered until the maximum amplitude of the FID decreased. The point just before the amplitude decrease is $\sim 4-5\times$T$_1$.
+
+    For accurate measurement of T$_1$ a two pulse sequence of: $180^{\circ}- \tau \text{(variable)} - 90^{\circ}\text{ (FID)}$
+
+\subsubsection*{Spin Echo}
+
+\subsubsection*{Carr-Purcell method}
+
+\subsubsection*{Meiboom-Gill method}
+
+
+
+
+\section*{Results \lowercase{and} Discussion }
+
+
+
+
+  \begin{tabular}[b]{ |c|c|c| }
+    \hline
+    \multicolumn{3}{|c|}{Mineral Oil} \\ \hline
+     Method & T$_1\pm$ error (ms) & T$_2\pm$ error (ms) \\ \hline
+     Single Pulse & $47\pm 4$ & - \\ \hline 
+     Spin Echo & - & $28\pm 1$ \\ \hline
+     Carl-Purcell & - & $80\pm 20$ \\ \hline 
+     Meiboom-Gill & - & $61\pm 6$ \\ \hline
+    \multicolumn{3}{|c|}{CuSO$_{4} \boldsymbol{\cdot} $H$_2$O} \\ \hline
+    Molarity (mol/L) & T$_1\pm$ error (ms) & T$_2\pm$ error (ms) \\ \hline
+    0.005 M & $240\pm 40 $ & $130 \pm 10$ \\ \hline 
+    0.01 M & $140 \pm 30$ & $100 \pm 10$ \\ \hline
+    0.05 M & $17.4 \pm 0.7 $ & $ 19.0 \pm 0.5$ \\ \hline 
+    0.1 M & $8.2 \pm 0.6$ & $8.0 \pm 0.4$ \\ \hline
+    0.2 M & $4.1 \pm 0.3$ & $4.9 \pm 0.4$ \\ \hline 
+    0.5 M & $1.7 \pm 0.1$ & $2.5 \pm 0.5$ \\ \hline
+    1.0 M & $0.75 \pm 0.05$ & $1.01 \pm 0.04$ \\ \hline 
+  \end{tabular}
+  
+
+  
+\subsubsection*{Single pulse FID}
+
+\subsubsection*{Magnetic Field Contours}
+
+  \begin{figure}[h]
+    \resizebox{0.55\textwidth}{!}{\input{figures/mag_field.pgf}}
+    \caption{Contour plot of magnetic field produced by the permanent magnet}
+    \label{fig:mo_t1}
+  \end{figure}
+\subsubsection*{Spin Echo}
+
+\subsubsection*{Carr-Purcell method}
+
+\subsubsection*{Meiboom-Gill method}
+
+\section*{Summary \lowercase{and} Conclusion}
+
+
+
+\section*{Appendix}
+
+
+  
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_T1.pgf}}
+    \caption{T1 measurement of mineral oil using the two-pulse method }
+    \label{fig:mo_t1}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_spinEcho.pgf}}
+    \caption{T2 measurement of mineral oil using the spin-echo pulse sequence }
+    \label{fig:mo_se}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_carlPurcell.pgf}}
+    \caption{T2 measurement of  using the Carl-Purcell pulse sequence }
+    \label{fig:mo_cp}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_T2.pgf}}
+    \caption{T2 measurement of Mineral oil using the Meiboom-Gill pulse sequence }
+    \label{fig:mo_t2}
+  \end{figure}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%% CuSo4 T1 %%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d005_T1.pgf}}
+    \caption{T1 measurement of 0.005 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
+    \label{fig:0d005_t1}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d01_T1.pgf}}
+    \caption{T1 measurement of 0.01 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
+    \label{fig:0d01_t1}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d05_T1.pgf}}
+    \caption{T1 measurement of 0.05 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
+    \label{fig:0d05_t1}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d1_T1.pgf}}
+    \caption{T1 measurement of 0.1 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
+    \label{fig:0d1_t1}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d2_T1.pgf}}
+    \caption{T1 measurement of 0.2 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
+    \label{fig:0d2_t1}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d5_T1.pgf}}
+    \caption{T1 measurement of 0.5 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using thetwo-pulse method }
+    \label{fig:0d5_t1}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_1d0_T1.pgf}}
+    \caption{T1 measurement of 1.0 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
+    \label{fig:1d0_t1}
+  \end{figure}
+
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%% CuSo4 T2 %%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d005_T2.pgf}}
+    \caption{T2 measurement of 0.005 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
+    \label{fig:0d005_t2}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d01_T2.pgf}}
+    \caption{T2 measurement of 0.01 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
+    \label{fig:0d01_t2}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d05_T2.pgf}}
+    \caption{T2 measurement of 0.05 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
+    \label{fig:0d05_t2}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d1_T2.pgf}}
+    \caption{T2 measurement of 0.1 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
+    \label{fig:0d1_t2}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d2_T2.pgf}}
+    \caption{T2 measurement of 0.2 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
+    \label{fig:0d2_t2}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d5_T2.pgf}}
+    \caption{T2 measurement of 0.5 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
+    \label{fig:0d5_t2}
+  \end{figure}
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_1d0_T2.pgf}}
+    \caption{T2 measurement of 1.0 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
+    \label{fig:1d0_t2}
+  \end{figure}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%% CuSo4 T1 %%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_linear.pgf}}
+    \caption{Inverse Time constants of CuSO$_{4} \boldsymbol{\cdot} $H$_2$O vs Molarity. Here 1/T$_i$ are proportional to $\gamma^2_p \mu^2_{eff} N_{ion} \eta / NkT$. Where $N_{ion}$ is the number density and is related to Molarity by $N_{ion} = N_A M$ }
+    \label{fig:cu_linear}
+  \end{figure}
+
+
+\bibliography{nmr_DA}{}
+
+
+
+\end{document}
