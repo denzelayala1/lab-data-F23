@@ -507,13 +507,13 @@
 \definecolor{textcolor}{rgb}{0.150000,0.150000,0.150000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=1.286745in, y=1.755015in, left, base]{\color{textcolor}\rmfamily\fontsize{20.000000}{24.000000}\selectfont M\(\displaystyle _z\)(t) = 7.36\(\displaystyle exp[\frac{-t}{T_2}]+\)-1.55}%
+\pgftext[x=1.286745in, y=1.755015in, left, base]{\color{textcolor}\rmfamily\fontsize{20.000000}{24.000000}\selectfont M\(\displaystyle _z\)(t) = 7.36\(\displaystyle exp[\frac{-2t}{T_2}]+\)-1.55}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \definecolor{textcolor}{rgb}{0.150000,0.150000,0.150000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=1.286745in, y=1.260959in, left, base]{\color{textcolor}\rmfamily\fontsize{20.000000}{24.000000}\selectfont T\(\displaystyle _2\) = 2.540\(\displaystyle \pm\)0.45 ms}%
+\pgftext[x=1.286745in, y=1.260959in, left, base]{\color{textcolor}\rmfamily\fontsize{20.000000}{24.000000}\selectfont T\(\displaystyle _2\) = 5.081\(\displaystyle \pm\)0.90 ms}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \definecolor{textcolor}{rgb}{0.150000,0.150000,0.150000}%

@@ -19,18 +19,26 @@ border=5pt
 \usepackage{multirow}
 \usetikzlibrary{arrows}
 \usepackage{mathtools}
+\usepackage{color,soul}
+\usepackage{mathrsfs}
+
+
 \DeclarePairedDelimiter\bra{\langle}{\rvert}
 \DeclarePairedDelimiter\ket{\lvert}{\rangle}
 \DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1\,\delimsize\vert\,\mathopen{}#2}
-\AtBeginDocument{\let\latexlabel\label}
+%\AtBeginDocument{\let\latexlabel\label}
 
+\newcommand*{\cuso}[1][]{CuSO$_{4} \boldsymbol{\cdot} $H$_2$O }
+\newcommand*{\tc}[1][1]{$T_#1$ }
+\newcommand*{\tg}[1][2]{$T_#1$ }
+%\input{test.tex}
 
 \begin{document}
 
 
 \preprint{APS/123-QED}
 
-\title{Spin-Lattice and Spin-Spin Relaxation Time Measurements \\ for Mineral Oil and Aqueous CuSO$_{4} \boldsymbol{\cdot} $H$_2$O}
+\title{Spin-Lattice and Spin-Spin Relaxation Time Measurements \\ for Mineral Oil and Aqueous \cuso}
 
 \author{Denzel Ayala} 
  \email{Denzelay@buffalo.edu}
@@ -50,24 +58,84 @@ State University of New York at Buffalo\\Department of Physics
 
 \begin{abstract}
 
-The resistivity of two cuprates $Bi_2Sr_2Ca_{2}Cu_3O_{10}$ (BSCCO) and $YBa_2Cu_3O_7$ (YBCO) was measured between 80--160 K to identify their critical temperature as superconductors with and without the presence of a static 122 mT magnetic field. The samples were measured using the Van Der Pauw method. Both materials displayed a high temperature superconductivity with BSCCO showing a $ T_c = 105\pm 7 K$ when $B=0 mT$ and $T_c = 98\pm 14 K$ when $B=122 mT$. YBCO had a lower temperature range at $T_c = 91\pm 2 K$ when $B=0 mT$ and $T_c = 88.5\pm 4 K$ when $B=122 mT$.
+    The spin-lattice relaxation time constant ($T_1$) and the spin-spin relaxation time constant ($T_2$) of mineral oil and \cuso were measured using a 15 MHz pulsed NMR. The \cuso concentrations ranged from 0.005--1.0 M. The \tc was measured using a $180^{\circ}- \tau \text{(variable)} - 90^{\circ}\text{ (FID)}$ two-pulse sequence. For mineral oil $T_1 = 47 \pm 4$ ms, while for \cuso \tc ranged from $240\pm40$ ms for a 5 mM solution to $0.75\pm0.05$ cm for a 1.0 M solution, displaying an inverse relationship with the molarity. The \tg of mineral oil was measured using the two pulse spin-echo, Carl-Purcell, and Meiboom-Gill pulse sequences. These gave \tg values of $ 55 \pm 3 $ ms, $160 \pm 40 $ ms, and $120 \pm 10$ ms respectively. The \tg of \cuso was measured using only the Meiboom-Gill pulse sequence and had a range of $250 \pm 20$--$2.0\pm 0.1$ ms for molarities between 0.005--1.0M respectively.  By plotting the 1/\tc and 1/\tg values versus Molarity we were able to see a linear relationship that could be used to find the effective magnetic dipole moment of Cu (II).
 
 \end{abstract}
 
 \maketitle
 
-\section*{\label{sec:intro}Introduction \\\lowercase{to} NMR}
+\section*{\label{sec:intro}Introduction \lowercase{to} NMR}
 
-  This is jhust rankdom test asdfl;kjfdsa ppijls.~\cite{ashcroft76}
+  Nuclear magnetic resonance (NMR) is a critical technology that has shaped the modern world. It has found applications in research, drug discovery, medicine, and even the food industry.~\cite{Labmate} The most used implementation of NMR is the Pulsed NMR technique discovered by Edward Purcell and Felix Bloch. NMR takes uses large uniform magnetic fields to non-destructively and non-invasively probe information about the chemical environment of a system. In medicine magnetic resonance imaging uses NMR to look at the hydrogen nuclei of water and hydrocarbons in the body to produces tomographic images with high resolution. This transformed the field of diagnostic medicine. Organic chemists regularly use ultra-high tesla NMRs to elucidate the fine structure details of molecules and proteins. This has been crucial in identifying reaction products, show reaction kinetics, quantify impurities and has massively sped up discovery times.  
+
+ In order to use this technique the atom of interest must have an odd number of nucleons. Thus this technique is both isotopically and chemically sensitive. Each atom and isotope require a characteristic pulse sequence to analyze. In this study we will focus on $^1$H-NMR.
 
 
-  Broad intro with applications
+\section*{Theory}
+  
+\begin{figure}[b]
+    \includegraphics[width = 0.45 \textwidth]{figures/lamor.jpg}
+    \caption{Left, model of Larmor precession of the nuclear spin about the direction of a steady applied magnetic field \textbf{B}. Right, analogous system a spinning top in a gravitational field.~\cite{Prasad2008}}
+    \label{fig:lamor}
+\end{figure}
 
-  basics of physics i.e. nucelar spin and magnetic field alignment
+  In the classical description of the resonance condition a rotating charge can be treated as a circulating current loop and as a result will have a magnetic dipole ($\mu$) described by $\mu = iA$, where `$i$' is the current and `$A$' is the cross-sectional area of the enclosed loop.~\cite{nmr65} However, as a proton is quantum object its magnetic moment is characterized by $\mu = \hbar \gamma \mathbf{I}$, where $\gamma$ is magnetogyric ratio and \textbf{I} is the magnetic quantum number given by nuclear spin.~\cite{nmr65}  When the a nucleon with magnetic moment $\mu$ is placed in a magnetic field the Hamiltonian for the system is given by
+
+  \begin{gather}
+    \mathscr{H} = -\mathbf{\mu}\cdot \mathbf{B} = -\hbar \gamma\mathbf{I}\cdot \mathbf{B} 
+  \end{gather}
+  with eigenvalues given by equation~\ref{eq:eigval}, ~\cite{nmr65}
+  \begin{gather}
+    E = \hbar \gamma m_z B_0 \label{eq:eigval}\\
+    \Delta E = 2 \hbar \gamma m_z B_0 \label{eq:esplit}
+  \end{gather}
+  In the case of a proton $m_z = \pm 1/2$. This causes an energy split given by equation~\ref{eq:esplit} between the two levels as one state will align with the applied magnetic field while the other will be anti-aligned. Here m$_z$ are the projected values of \textbf{I} onto the z-axis defined by the magnetic field. 
+
+
+  As this motion is akin to a harmonic oscillator we can set the energy difference equal to a characteristic, or in this case resonant frequency. The harmonic motion is the rotation or precession about the axis of the applied magnetic field. A toy model of this can be seen in figure~\ref{fig:lamor}. 
+
+  \begin{gather}
+    \Delta E_{proton} = \hbar \omega =  \hbar \gamma B_0 \nonumber \\
+    \omega_0 = \gamma B_0 \rightarrow f_0 = \frac{\gamma B_0}{2 \pi}
+  \end{gather}
+
+  In properly address macroscopic samples we must define a net magnetization $\mathbf{M} = \sum_{i} \mu_i$. Now  we are able to look at a population of spins precessing about an applied magnetic field axis. However, the current model is only useful in a static equilibrium system, so in order to see the time evolution we can consider the system relaxing \textit{towards} equilibrium under the influence of an applied magentic field $\mathbf{B} = B_0 \hat{z}$ and solve the differential equation as shown by equations~\ref{eq:diff1}--\ref{eq:mzt1}.
+
+\begin{gather}
+    \mathbf{M}|_{\mathbf{B}} = M_0 \hat{z} \label{eq:diff1} \\
+    \frac{dM_z}{dt} = \frac{M_0 - M_{z}}{T_1} \\
+    M_z(t) = M_0 \left(1-2 e^\frac{-t}{T_1}\right) \label{eq:mzt1}
+\end{gather}
+
+  Here we took $M_z(t=0) = -M_0$, such that the initial magnetization vector pointed in the $-\hat{z}$-axis.This corresponds to complete anti-alignment with the applied field. Notice that we included a characteristic constant $T_1$, which is a characteristic constant that corresponds to the spin-lattice relaxation constant. This name comes from how the spins give the energy gained from the RF pulse to the surrounding lattice.~\cite{nmr65}
+
+  The previous analysis fails to take into account the transverse magnetizations $M_x$ and $M_y$. This can be treated by solving the differential equation
+
+  \begin{gather}
+    \frac{dM_{i^*}}{dt} = \frac{M_0 - M_{i^*}}{T_2} \\
+    \text{where } i = x , y
+  \end{gather}
+
+
+  Solving this system gives a simple exponential, with a characteristic time constant \tg that defines the spin-spin relaxation time constant. However, equation~\ref{eq:mzt2_wrong} is difficult to measure experimentally as there is some loss of the transverse magnetization due to stochastic fluctuations in the local nuclear fields. As a result the spin echo is typically measured instead (equation~\ref{eq:mzt2}). 
+
+  \begin{gather}
+    M_z(t) = M_0  e^\frac{-t}{T_2}  \label{eq:mzt2_wrong}\\
+    M_z(t) = M_0  e^\frac{-2\tau}{T_2}  \label{eq:mzt2}
+  \end{gather}
+
+  The spin echo is related to how the spins dephase and rephase. Once the system is allowed to evolve the nuclear spins can precess in any direction as a result the measured signal is lost. If the spins are pulsed with a RF wave, they can be forced to realign themselves. This realignment and subsequent thermalization is the spin echo. In order to probe this various pulse sequences are used to coax the nuclear spins into behaving as desired.  
 
 \subsection*{Pulse Sequences}
 
+
+  Broad intro with applications thisi s a test of figure reference look at fig
+
+  basics of physics i.e. nucelar spin and magnetic field alignment
+
 \subsubsection*{T1 sequence}
+
+
 
 \subsubsection*{spin echo}
 
@@ -87,9 +155,9 @@ The resistivity of two cuprates $Bi_2Sr_2Ca_{2}Cu_3O_{10}$ (BSCCO) and $YBa_2Cu_
     \end{figure}
 
 
-    A TeachSpin PS1-A system was used to produce/amplify the pulse sequences, and pickup/amplify the output signal. The signal was then processed/synced and displayed on a Tektronix TBS 1052B Digital Oscilloscope. A simplified block diagram of the system is shown in figure~\ref{fig:block}. The pulse sequence begins at the \textbf{pulse programer}. The exact number of pulses, their widths, and time characteristics are defined in this module. This sends two signals, the first goes to the \textbf{oscilloscope}, the second to the \textbf{RF synthesized oscillator}. This first signal is to let the oscilloscope know when a output signal is coming. The second signal tells the RF synthesized oscillator what pulse sequence to generate. From there the pulse sequence is sent to an \textbf{RF amplifier} and the \textbf{mixer}. The amplifier ensure that a strong enough signal sequence is transmitted to the transmitter Helmholtz coils in the sample chamber such that it influences the nuclear spins. The mixer combines the reference signal with the sample output signal. Before getting to the mixer the sample output signal goes to the \textbf{receiver}. The receiver also sends the output signal to a \textbf{RF amplifier detector}. The mixer and RF amplifier detector both send the signal to the oscilloscope. 
+    For these experiments, a TeachSpin PS1-A system was used to produce/amplify the pulse sequences, and pickup/amplify the output signal. The signal was then processed/synced and displayed on a Tektronix TBS 1052B Digital Oscilloscope. A simplified block diagram of the system is shown in figure~\ref{fig:block}. The pulse sequence begins at the \textbf{pulse programer}. The exact number of pulses, their widths, and time characteristics are defined in this module. This sends two signals, the first goes to the \textbf{oscilloscope}, the second to the \textbf{RF synthesized oscillator}. This first signal is to let the oscilloscope know when a output signal is coming. The second signal tells the RF synthesized oscillator what pulse sequence to generate. From there the pulse sequence is sent to an \textbf{RF amplifier} and the \textbf{mixer}. The amplifier ensure that a strong enough signal sequence is transmitted to the transmitter Helmholtz coils in the sample chamber such that it influences the nuclear spins. The mixer combines the reference signal with the sample output signal. Before getting to the mixer the sample output signal goes to the \textbf{receiver}. The receiver also sends the output signal to a \textbf{RF amplifier detector}. The mixer and RF amplifier detector both send the signal to the oscilloscope. 
     
-    The \textbf{pulse programer}
+    The \textbf{pulse programer} outputs pulses that are about 4V with a rise time of 15ns. The length of these pulses can be controlled with the A-width or B-width knobs and ranges from 1-30$\mu$s. The two knobs exists because it is able to program the number of pulses. Its capable of producing 1 A-pulse and between 0-99 B-pulses for a maximum of 100 pulses. It also can set the delay time ($\tau$) between pulses. This is done using the dial switches between the pulse width knobs.  If there are more than one B-pulses then the delay between the B-pulses is 2$\tau$. The repetition time knobs in the center of the module decide how long to wait before starting the next pulse train. 
     
     
   
@@ -110,212 +178,254 @@ Discribe 3 module system,  oscilloscope.
 \subsection*{Procedure}
 
 \subsubsection*{Sample Preparation} 
-    The two chemical species of interest were mineral oil, and CuSO$_{4} \boldsymbol{\cdot} $H$_2$O. The mineral oil was used as purchased from supplier. As CuSO$_{4}$ is a blue crystalline solid it was dissolved in deionized water prior to measurement.Seven sample concentrations of 0.005M, 0.01M, 0.05M, 0.1M, 0.2M 0.5M, \& 1M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O were prepared. 
+    The two chemical species of interest were mineral oil, and CuSO$_{4} \boldsymbol{\cdot} $H$_2$O. The mineral oil was used as purchased from supplier. As CuSO$_{4}$ is a blue crystalline solid it was dissolved in deionized water prior to measurement.Seven sample concentrations of 0.005M, 0.01M, 0.05M, 0.1M, 0.2M 0.5M, \& 1M \cuso were prepared. 
 
-    Chemical species were loaded into their own glass sample vials. Samples should be approximately cubical (~5mm tall) so that the magnetic field is experienced uniformly in the entire sample. Sample vials are caped with a rubber stop to ensure that concentrations are consistent and there is minimal evaporation or contamination. A rubber o-ring was used to adjust the sample depth inside of the probe. The o-ring was placed at the same height for all sample. 
+    Chemical species were loaded into their own glass sample vials. Samples should be approximately cubical (~5mm tall) so that the magnetic field is experienced uniformly in the entire sample. Sample vials are caped with a rubber stop to ensure that concentrations are consistent and there is minimal evaporation or contamination. A rubber o-ring was used to adjust the sample depth inside of the probe. The optimal depth maximizes the signal amplitude and is roughly 1.5 inches from the bottom of the sample vial. The o-ring was placed at the same height for all sample. 
 
 
 \subsubsection*{Single pulse FID}
-    talk about capaciter, gain, i.e. the stuff that must be done for ALL pulse sequences
+    
+    The procedure used in this section are used for the rest of the sections as well, as the goal of this section is to get a spectra that is in resonance. It should be assumed that for all measurements after this that this section is repeated.
+
+    In order to maximize signal output on the oscilloscope, the spectrometer receiver must be tuned. First the signal to noise ratio must be reasonable. There are two parameters that control this. The gain knob on the receiver was set to 50\%. Additionally, the time constant knob was set to 0.1ms, because above this point the signal amplitude decreased. From there the spectrometer was tuned using the tuning knob is located on the receiver. This knob turns a capacitor inside the receiver and should be rotated in such a way that the signal amplitude is maximized. These parameters are relatively consistent between samples however some minor tuning may be necessary.
+
+    On the pulse programer the mode was set to int. Additionally, the repetition time is set to be long enough for the magnetization vector to return to its equilibrium position. In the case of mineral oil we set the repetition time to 500 ms. At this point, the pulse sequence needs to be programed. Each sequence is unique but the programming of them is procedurally the same. In the case of the one pulse free induction decay (FID) pulse sequence we have a single $90^\circ$ A-pulse. However, other sequences may have multiple pulses. In those cases you turn on the B-pulses as well, select the number of B-pulses and choose the desired B-pulse-angle in a similar manner to the A-pulse. 
+
+    To find the desired pulse angle the A- or B-width knob is rotated clockwise starting from the zero point. For a $90^\circ$ pulse the signal amplitude will be at a maximum. On our instrument that was about 20\% of the way on. It is recommended that while finding the desired pulse length the other pulse is turned off and the sync is set to the pulse of interest. For example, if tuning the B-pulse to $90^\circ$ the A-pulse should be switched off, the sync should be on B and the number of pulses should be 1. This is so that no other factors influence the peak amplitude. The same is true when tuning the A-pulse; B-pulse should be off and sync set to A. 
+
+    
+    \begin{figure}
+        \includegraphics[width= 0.45\textwidth]{figures/noResonance.JPG}
+        \caption{Single Pulse Free Induction Decay (FID) when out of resonance.}
+        \label{fig:beats}
+    \end{figure}
+
+    As the magnet is $\sim 0.35$ Tesla, the resonant frequency will be around 15MHz. To find resonant frequency the frequency adjust knob is rotated until the mixer out spectra on the oscilloscope doesn't show any ``beats''. If the frequency is incorrect the displayed pulse will have multiple peaks within a single pulse, this is known as a beat (figure~\ref{fig:beats}). The resonance condition is when there is a single clean line that outlines a pulse or if it is perfectly flat. 
+
+    Taking these parameters into account in order to acquire a single pulse FID of mineral oil the spectrometer must be set to output only the A-pulse, with a width of $\sim 20\%$, and a repetition time of 500m. From there a single clean pulse was found by tuning the frequency to 15.42707 MHz. A screenshot of the oscilloscope was taken. 
+
 \subsubsection*{Magnetic Field Contours}
 
-    In order to maximize signal amplitude the spatial dependence of the magnetic field was mapped so the sample can be placed in the section with the most uniform field. This was done by finding the resonant frequency at every point in a regular grid. Field uniformity is determined by a region with minimal change in the resonant frequency. As the resonant frequency of the magnet drift over time due to thermal effects it is crucial to take these measurements rapidly. 
+    In order to maximize signal amplitude the spatial dependence of the magnetic field was mapped so the sample can be placed in the section with the most uniform field. This was done by finding the resonant frequency at every point in a regular grid. Field uniformity is determined by a region with minimal change in the resonant frequency. Due to thermal effects the resonant frequency of the magnet drifts over time, thus  it is crucial to take these measurements rapidly. As the constant magnetic field $(B_0)$ was produced by a permanent ferromagnet, magnetic domain effects come into play. Some domains may be smaller than other and the most uniform field may not necessarily be in the center. However, it is also critical to avoid edge effects. 
     
-    The direction of the permanent magnetic field $(B_0)$ will be called the z-axis. The sample holder allowed for freedom of movement in the x and y directions. Here the y-axis moved the sample up and down while the x-direction moved the sample perpendicular to the sample table. The values of the y-axis range from $0\ldots20~cm$ and begin at the bottom of the magnet and finish at the top. The x-axis places its zero point at the center of the magnet and ranges from $-10\ldots10~cm$ The field was mapped from $-1~cm \leq x \leq +1~cm$ with step sizes of $0.2~cm$ and from $9~cm \leq y \leq 11~cm$ with step sizes of $0.5~cm$. 
+    The direction of $B_0$ is parallel to the table top and will be called the z-axis. The sample holder allowed for freedom of movement in the x and y directions. Here the y-axis moved the sample up and down relative to table surface, while the x-direction moved the sample parallel to the surface but perpendicular to $B_0$. The values of the y-axis range from $0\ldots20~cm$ and begin at the bottom of the magnet and finish at the top. The x-axis places its zero point at the center of the magnet and ranges from $-10\ldots10~cm$. The field was mapped from $-1~cm \leq x \leq +1~cm$ with step sizes of $0.2~cm$ and from $9~cm \leq y \leq 11~cm$ with step sizes of $0.5~cm$. The resonance frequency values were mapped onto a contour plot and the section with the least change  in the resonant frequency was determined to have the most uniform magnetic field. 
 
 \subsubsection*{Spin-Lattice Relaxation: T1 Sequence}
+
+
     A quick estimate of T$_1$ was acquired. First the spectrometer was set to resonance for a single pulse FID with a large repetition time. The repetition time was slowly lowered until the maximum amplitude of the FID decreased. The point just before the amplitude decrease is $\sim 4-5\times$T$_1$.
 
-    For accurate measurement of T$_1$ a two pulse sequence of: $180^{\circ}- \tau \text{(variable)} - 90^{\circ}\text{ (FID)}$
+    For accurate measurement of T$_1$ a two pulse sequence of: $180^{\circ}- \tau \text{(variable)} - 90^{\circ}\text{ (FID)}$. An $180^{\circ}$ pulse is characterized by the amplitude of the pulse of interest being at a minimum, while a $90^{\circ}$ pulse is when the pulse amplitude is at a maximum as previously stated. So in this sequence the `A' pulse should be a minimum while the `B' pulse is maximized. However, if the sample is back in alignment with $B_0$ the signal received after the B-pulse will be unchanging. Thus by varying the delay time $(\tau )$ the amplitude of the B-pulse will vary until the saturation point is reached. By measuring the B-pulse amplitude over a range of delay times a fit can be made to equation~\ref{eq:mzt1}. \textbf{Note:} as the oscilloscope outputs the magnitude of the signal it will first appear as the signal is decreasing then increasing once it reaches zero see fig~\ref{fig:magnetization_t1}. Also for ease of measurement insure that pulse programer is synced to the B-pulse makes the measurement easier. 
 
-\subsubsection*{Spin Echo}
+    \begin{center}
+        \begin{figure}[b]
+            \includegraphics[width=0.4\textwidth]{figures/t1_pulse_magnetization.png}
+            \caption{Top the z-component of the magnetization $(M_z)$vector over time. Bottom the amplitude of the magnetization.}
+            \label{fig:magnetization_t1}
+          \end{figure}
+    \end{center}
 
-\subsubsection*{Carr-Purcell method}
+\subsubsection*{Spin-Echo and Carl-Purcell methods}
+
+    Both spin-echo and the Carl-Purcell method of measuring $T_2$ were only done on the mineral oil sample as the Meiboom-Gill pulse sequence is more accurate in nearly all cases.
+
+    The spin-echo sequence is also a two pulse method however its sequence is: $90^{\circ}- \tau  - 180^{\circ}-\tau-\text{echo(at $2\tau$)}$. Similar to the $T_1$ measurement the signal amplitude decays as a function of the delay time. Thus the delay was varied by intervals of 10. The first two values were 1.5ms and 10ms and measurements ended at 90ms. The amplitudes were measured at varying delay times just like in the $T_1$ two-pulse method. A plot of delay time versus spin-echo amplitude was made and the $T_2$ was found by fitting equation~\ref{eq:mzt2}.
+
+    The CP sequence is like the spin-echo method but with multiple B-pulses. Its sequence is: $90^{\circ}- \tau  - 180^{\circ}-2\tau- 180^{\circ}-2\tau- \dots$. Here the choice of delay time is critical as the spacing $2\tau$ should be short compared to the diffusion time of the spin through the magnetic field gradient. We used a delay time of 5 ms and 80 B-pulses for our measurements. The oscilloscope output was frozen and the spin-echo amplitude was measured at 10 points in intervals of $\sim$16 ms between peaks. Again the results were plotted and fitted to equation~\ref{eq:mzt2}.
+
+
+    \begin{table}
+    \begin{center}
+    \begin{tabular}[t]{ |c|c|c| }
+        \hline
+        \multicolumn{3}{|c|}{Mineral Oil} \\ \hline 
+        Molarity (mol/L) & Delay Time (ms) & Num. Pulses \\ \hline
+        - & 4 & 60 \\ \hline 
+    
+        \multicolumn{3}{|c|}{CuSO$_{4} \boldsymbol{\cdot} $H$_2$O} \\ \hline
+        Molarity (mol/L) & Delay Time (ms) & Num. Pulses \\ \hline
+        0.005 M & 4 & 50 \\ \hline 
+        0.01 M & 4 & 40  \\ \hline
+        0.05 M & 1 & 50  \\ \hline 
+        0.1 M & 0.8 & 50  \\ \hline
+        0.2 M & 0.8 & 50  \\ \hline 
+        0.5 M & 0.8 & 50  \\ \hline
+        1.0 M & 0.1 & 20  \\ \hline 
+    \end{tabular}
+    \caption{The delay time and number of pulses used in the Meiboom-Gill pulse sequence for each mineral oil and \cuso. }
+    \label{tab:delaytime}
+    \end{center}
+    \end{table}
 
 \subsubsection*{Meiboom-Gill method}
 
-
+    The MG method was used to find $T_2$ for the mineral oil and all the \cuso samples. This sequence is nearly identical to the CP sequence the only difference is that the $180^\circ$ pulses alternate in their direction; i.e. the sequence is $90^{\circ}- \tau  - 180^{\circ}-2\tau- ^{-}180^{\circ}-2\tau- 180^{\circ}\dots$. This is accomplished by turning on the MG switch on the pulse amplifier/mixer. The output signal was frozen on the oscilloscope monitor and 10--15 amplitudes were measured at regular time intervals. As the spin diffusion time is dependent on the chemical species and environment the optimal delay time and number of pulses changed between samples. Table~\ref{tab:delaytime} displays the values used in our lab. The results for each chemical species and concentration were plotted and fitted to equation~\ref{eq:mzt2}.
 
 
 \section*{Results \lowercase{and} Discussion }
 
-
-
-
-  \begin{tabular}[b]{ |c|c|c| }
-    \hline
-    \multicolumn{3}{|c|}{Mineral Oil} \\ \hline
-     Method & T$_1\pm$ error (ms) & T$_2\pm$ error (ms) \\ \hline
-     Single Pulse & $47\pm 4$ & - \\ \hline 
-     Spin Echo & - & $28\pm 1$ \\ \hline
-     Carl-Purcell & - & $80\pm 20$ \\ \hline 
-     Meiboom-Gill & - & $61\pm 6$ \\ \hline
-    \multicolumn{3}{|c|}{CuSO$_{4} \boldsymbol{\cdot} $H$_2$O} \\ \hline
-    Molarity (mol/L) & T$_1\pm$ error (ms) & T$_2\pm$ error (ms) \\ \hline
-    0.005 M & $240\pm 40 $ & $130 \pm 10$ \\ \hline 
-    0.01 M & $140 \pm 30$ & $100 \pm 10$ \\ \hline
-    0.05 M & $17.4 \pm 0.7 $ & $ 19.0 \pm 0.5$ \\ \hline 
-    0.1 M & $8.2 \pm 0.6$ & $8.0 \pm 0.4$ \\ \hline
-    0.2 M & $4.1 \pm 0.3$ & $4.9 \pm 0.4$ \\ \hline 
-    0.5 M & $1.7 \pm 0.1$ & $2.5 \pm 0.5$ \\ \hline
-    1.0 M & $0.75 \pm 0.05$ & $1.01 \pm 0.04$ \\ \hline 
-  \end{tabular}
+    The measured $T_1$ and $T_2$ values for both mineral oil and \cuso are summarized in table~\ref{tab:summery}. Additionally, detailed plots for all of the \cuso concentrations can be found in the Appendix. These sections will discuss the trends in the results with key examples.
   
-
-  
-\subsubsection*{Single pulse FID}
-
 \subsubsection*{Magnetic Field Contours}
 
   \begin{figure}[h]
-    \resizebox{0.55\textwidth}{!}{\input{figures/mag_field.pgf}}
+    \resizebox{0.45\textwidth}{!}{\input{figures/mag_field.pgf}}
     \caption{Contour plot of magnetic field produced by the permanent magnet}
-    \label{fig:mo_t1}
+    \label{fig:magContour}
   \end{figure}
-\subsubsection*{Spin Echo}
 
-\subsubsection*{Carr-Purcell method}
+  By plotting the spatial dependence of the resonant frequency (fig~\ref{fig:magContour}) we were able to determine that the most uniform magnetic field was in the domain between $-0.75 \leq x \leq 0.1 $ cm and $10.5 \leq y \leq 11 $ cm. We chose to place the samples in center of this region as a ``buffer'' to any thermal drift that may occur over time. Hence all future measurements were done with the sample at $ (x,y) = (-0.2, 10.75)$. 
 
-\subsubsection*{Meiboom-Gill method}
+\subsubsection*{Spin-Lattice $T_1$}
+
+    All data was fit using the standard python library scipy with the command  ``\textbf{scipy.optimize.curve\textunderscore fit}''. In the case of the \tc fit to eq.~\ref{eq:mzt1}. Here the `$+c$' comes from the offset value when taking measurements on the oscilloscope. 
+
+    \begin{gather*}
+        M_z(t) = M_0 \left(1-2 e^\frac{-t}{T_1}\right) + c \tag{\ref{eq:mzt1} revisted}
+    \end{gather*}
+
+    
+    \begin{figure}[b]
+        \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_T1.pgf}}
+        \caption{T1 measurement of mineral oil using the two-pulse method }
+        \label{fig:mo_t1}
+      \end{figure}
+
+    The first sample analyzed was mineral oil. The quick estimate of \tc acquired by lowering the repetition time yielded a value of 60-75 ms as the amplitude began to drop around 300 ms. A more accurate value comes from solving eq~\ref{eq:mzt1} for \tc when the magnetization in the z-direction is zero eq~\ref{eq:t1_2}. The zero crossing in our data is between 35-40 ms which gives a range of 50.5-57.7 ms. However, the most accurate value comes from fitting the data (fig~\ref{fig:mo_t1}). This returned a value of $T_1=47\pm 4$ ms.
+
+    \begin{gather}
+        T_1 = \frac{t|_{M_z=0}}{ln(2)} \label{eq:t1_2}
+    \end{gather}
+
+    To maintain accuracy, only the curve fit was used to find \tc for the \cuso samples. The spin-lattice relaxation time had an inverse relationship with the concentration of CuSO$_4$. In our measurements it ranged from $240\pm40$ ms for a 5 mM solution to $0.75\pm0.05$ cm at a concentration of 1.0 M. For reference the \tc of deionized water in a 14.71MHz magnet is $\sim$2700 ms.~\cite{medphys} Due to CuSO$_4$ ions having unpaired electron spins on the copper atoms, the hydrogen atoms in the hydrate-complex experience a large localized magnetic field from the ionic magnetic moment. This results in even a small amount of CuSO$_4$ causing both \tc and most notably \tc[2] to shift dramatically.~\cite{nmr65}
+
+    
+    \begin{figure}[t]
+        \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d005_T1.pgf}}
+        \caption{T1 measurement of 0.005 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
+        \label{fig:0d005_t1}
+      \end{figure}
+    
+      \begin{figure}[b]
+        \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_1d0_T1.pgf}}
+        \caption{T1 measurement of 1.0 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
+        \label{fig:1d0_t1}
+      \end{figure}
+    
+    The relative error (error/$T_1$) was larger for the lower concentration samples. The largest contributor to the error at these concentrations is that the data taken was in too small of a range. For the lower concentrations the delay times measured did not extend to the saturation point of the sample as seen by how fig~\ref{fig:0d005_t1} is almost linear and doesn't cross into the positive values, while fig~\ref{fig:1d0_t1} shows the distinctive asymptotic approach to the saturation point. There are additional sources of error that arise from the sample concentrations. At lower concentrations any extra or missing water can substantially alter the real concentration of the sample. Finally, as the temperature of the laboratory was not controlled there is likely minimal resonant frequency drift due to thermal fluctuations. 
+
+
+
+\subsubsection*{Mineral Oil Spin-Spin Relaxation}
+
+    
+    The \tc[2] data for all the different pulse sequences were fitted using equation~\ref{eq:mzt2} where the `$+c$' is from the oscilloscope offset.
+    
+    \begin{gather*}
+        M_z(t) = M_0  e^\frac{-2t}{T_1} + c \tag{\ref{eq:mzt2} revisted}
+    \end{gather*}
+
+
+    \begin{figure}[t]
+        \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_spinEcho.pgf}}
+        \caption{T2 measurement of mineral oil using the spin-echo pulse sequence }
+        \label{fig:mo_se}
+    \end{figure}
+
+    \begin{figure}[b]
+        \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_carlPurcell.pgf}}
+        \caption{T2 measurement of mineral oil using the Carl-Purcell pulse sequence }
+        \label{fig:mo_cp}
+    \end{figure}
+    
+    The fitted \tc[2] values for mineral oil range have a broad range. When using the spin-echo technique $T_2 = 55 \pm 3$, for the CP method $T_2 = 160 \pm 40 $, while for the most accurate method the MG pulse sequence $T_2 = 120 \pm 10 $. According to H. M. Gach, the \tc[2] of `pure mineral oil' in a 14.71 MHz magnet is $71 \pm 2$ while that of `white mineral oil' is $111 \pm 2 $.~\cite{medphys} The MG measurement has overlapping ranges with the white mineral oil while the spin-echo method is closer to the pure mineral oil samples. There are multiple sources of error for these measurements.
+    
+
+
+
+    Mineral oil is a catch all term for hydrocarbons within a molecular weight range so its difficult to know what the exact chemical structure of our sample is without looking at a characteristic NMR spectra commonly analyzed by organic chemists. Additionally, hydrocarbon cocktails with similar molecular weights are often sold together as a single product as is the case with `hexane' solvents or `octane' fuel. Mineral oil is subject to the same trend. This may be a source of error although it depends on where the sample was purchases from.
+
+
+
+
+      The larger sources of error come from the pulse sequences themselves. The simple spin-echo technique runs the risk of spin diffusion and chemical species diffusion. Meanwhile, the CP sequence is runs the likely risk of a phase shift over the course of a pulse train as any deviation from exactly $180^\circ$ will be magnified after dozens of pulses. Additionally, the various data points in the CP plot (fig~\ref{fig:mo_cp}) have a large spread, including the last point. These two things in conjunction combine to make the relative error of the CP sequence $\sim 25\%$. 
+
+\subsubsection*{\cuso Spin-Spin Relaxation}
+
+      The values for \tc[2] ranged from $250 \pm 20$ ms for the 5 mM solution to $2.0 \pm 1$ ms for the 1 M solution. This shows that the \tg values followed the same trend as the \tc values, meaning that as the concentration of \cuso increased the spin-spin relaxation time decreased (fig~\ref{fig:sumt2}). This is explained by the presence of a large electronic magnetic moment in the form of the Cu(II) paramagnetic ion.  
+
+      \begin{figure}[b]
+        \resizebox{0.45\textwidth}{!}{\input{figures/summery_t2.pgf}}
+        \caption{Overlay of all \cuso \tg measurements. }
+        \label{fig:sumt2}
+     \end{figure}
+
+      Our results are in good agreement with the literature, Kalaivani et. al report a \tg of $248 \pm 6$ for a 5 mM \cuso solution.~\cite{THANGAVEL2017} This has an overlapping range with our measured value. 
+
+\subsubsection*{\cuso Molarity Fits}
+
+    \begin{figure}[h]
+        \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_linear.pgf}}
+        \caption{Inverse Time constants of CuSO$_{4} \boldsymbol{\cdot} $H$_2$O vs Molarity. }
+        \label{fig:cu_linear}
+    \end{figure}
+
+     As there is an inverse relationship with the relaxation times and the molarity of the solution, we performed a linear fit of this relationship. Here the slope of the lines is proportional to $\gamma^2_p \mu^2_{eff} N_{A} \eta / NkT$. Where $N_{A}$ is the Avogadro's number, $\gamma_p$ and $\eta$ are the gyromagnetic ratio of the proton and the viscosity of water. The value of interest is $\mu_{eff}$ which is the effective magnetic moment of Cu (II). By plugging in the relevant constants into equation~\ref{eq:mageff} at 20 $^\circ$C a very rough estimate of the effective magnetic dipole moment could be made. 
+
+
+     \begin{gather}
+        \mu_{eff} = \gamma_p \sqrt{\frac{\text{slope}~k_b T}{N_A \eta}} \label{eq:mageff}
+     \end{gather}
+
+     While it appears that the errors are larger at the higher concentrations this is misleading. The relative error is what matters in these plots. The errors were calculated by taking the previous error in the \tc and \tg measurements and finding their percent error before inversion. This percentage was then applied to the inverted values to get the relative error in these values as well. There for this plot is subject to the same sources of error as the \tc and \tg fits; mainly that for low concentrations the measured delay time was long enough. 
+
+
+
+
+    \begin{table}[h]
+    \begin{center}
+    \begin{tabular}[b]{ |c|c|c| }
+        \hline
+        \multicolumn{3}{|c|}{Mineral Oil} \\ \hline
+        Method & T$_1\pm$ error (ms) & T$_2\pm$ error (ms) \\ \hline
+        Single Pulse & $47\pm 4$ & - \\ \hline 
+        Spin Echo & - & $55\pm 3$ \\ \hline
+        Carl-Purcell & - & $160\pm 40$ \\ \hline 
+        Meiboom-Gill & - & $120\pm 10$ \\ \hline
+        \multicolumn{3}{|c|}{CuSO$_{4} \boldsymbol{\cdot} $H$_2$O} \\ \hline
+        Molarity (mol/L) & T$_1\pm$ error (ms) & T$_2\pm$ error (ms) \\ \hline
+        0.005 M & $240\pm 40 $ & $250 \pm 20$ \\ \hline 
+        0.01 M & $140 \pm 30$ & $190 \pm 30$ \\ \hline
+        0.05 M & $17.4 \pm 0.7 $ & $ 38 \pm 1$ \\ \hline 
+        0.1 M & $8.2 \pm 0.6$ & $16 \pm 1$ \\ \hline
+        0.2 M & $4.1 \pm 0.3$ & $10 \pm 1$ \\ \hline 
+        0.5 M & $1.7 \pm 0.1$ & $5 \pm 1$ \\ \hline
+        1.0 M & $0.75 \pm 0.05$ & $2.0 \pm 0.1$ \\ \hline 
+    \end{tabular}
+        
+        \caption{Summery table of the $T_1$ and $T_2$ values for mineral oil and \cuso}
+        \label{tab:summery}
+    \end{center}
+    \end{table}
+  
 
 \section*{Summary \lowercase{and} Conclusion}
 
 
-
-\section*{Appendix}
-
-
-  
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_T1.pgf}}
-    \caption{T1 measurement of mineral oil using the two-pulse method }
-    \label{fig:mo_t1}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_spinEcho.pgf}}
-    \caption{T2 measurement of mineral oil using the spin-echo pulse sequence }
-    \label{fig:mo_se}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_carlPurcell.pgf}}
-    \caption{T2 measurement of  using the Carl-Purcell pulse sequence }
-    \label{fig:mo_cp}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_T2.pgf}}
-    \caption{T2 measurement of Mineral oil using the Meiboom-Gill pulse sequence }
-    \label{fig:mo_t2}
-  \end{figure}
-
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%% CuSo4 T1 %%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d005_T1.pgf}}
-    \caption{T1 measurement of 0.005 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
-    \label{fig:0d005_t1}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d01_T1.pgf}}
-    \caption{T1 measurement of 0.01 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
-    \label{fig:0d01_t1}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d05_T1.pgf}}
-    \caption{T1 measurement of 0.05 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
-    \label{fig:0d05_t1}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d1_T1.pgf}}
-    \caption{T1 measurement of 0.1 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
-    \label{fig:0d1_t1}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d2_T1.pgf}}
-    \caption{T1 measurement of 0.2 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
-    \label{fig:0d2_t1}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d5_T1.pgf}}
-    \caption{T1 measurement of 0.5 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using thetwo-pulse method }
-    \label{fig:0d5_t1}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_1d0_T1.pgf}}
-    \caption{T1 measurement of 1.0 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
-    \label{fig:1d0_t1}
-  \end{figure}
+    Using a TeachSpin PS1-A spectrometer were able to identify the spin-lattice and spin-spin relaxation times for \cuso and mineral oil. This was accomplished by first identifying the region with the most uniform magnetic field in our equipment, finding the resonant frequency, programming the pulse sequence, measuring the outputs on our oscilloscope, and finally fitting our data. Using this frame work we found the \tc values using the two pulse method. The exact values are summerized in table~\ref{tab:summery}. Furthermore, we used the Meiboom-Gill pulse sequence to find the \tg for all our samples. In the case of mineral oil we compared the \tg values obtained using MG sequence with those from two-pulse spin-echo sequence and the Carl-Purcell pulse sequence. In the future, more accurate results could be  obtained by increasing the delay time to larger values so that lower concentration solutions of \cuso can reach saturation.
 
 
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%% CuSo4 T2 %%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d005_T2.pgf}}
-    \caption{T2 measurement of 0.005 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
-    \label{fig:0d005_t2}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d01_T2.pgf}}
-    \caption{T2 measurement of 0.01 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
-    \label{fig:0d01_t2}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d05_T2.pgf}}
-    \caption{T2 measurement of 0.05 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
-    \label{fig:0d05_t2}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d1_T2.pgf}}
-    \caption{T2 measurement of 0.1 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
-    \label{fig:0d1_t2}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d2_T2.pgf}}
-    \caption{T2 measurement of 0.2 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
-    \label{fig:0d2_t2}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_0d5_T2.pgf}}
-    \caption{T2 measurement of 0.5 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
-    \label{fig:0d5_t2}
-  \end{figure}
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_1d0_T2.pgf}}
-    \caption{T2 measurement of 1.0 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
-    \label{fig:1d0_t2}
-  \end{figure}
-
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %%%%%%%%%% CuSo4 T1 %%%%%%%%%%%%%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-  \begin{figure}[h]
-    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_linear.pgf}}
-    \caption{Inverse Time constants of CuSO$_{4} \boldsymbol{\cdot} $H$_2$O vs Molarity. Here 1/T$_i$ are proportional to $\gamma^2_p \mu^2_{eff} N_{ion} \eta / NkT$. Where $N_{ion}$ is the number density and is related to Molarity by $N_{ion} = N_A M$ }
-    \label{fig:cu_linear}
-  \end{figure}
-
+\clearpage
 
 \bibliography{nmr_DA}{}
+
+\clearpage
+
+
+\onecolumngrid
+
+\section*{Appendix}
 
 
 

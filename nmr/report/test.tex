@@ -1,0 +1,44 @@
+
+\newcommand*{\testfig}[1][Inverse Time constants of CuSO$_{4} \boldsymbol{\cdot} $H$_2$O vs Molarity. Here 1/T$_i$ are proportional to $\gamma^2_p \mu^2_{eff} N_{ion} \eta / NkT$. Where $N_{ion}$ is the number density and is related to Molarity by $N_{ion} = N_A M$ ]{  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/CuSO4_linear.pgf}}
+    \caption{#1}
+    \label{fig:cu_linear}
+  \end{figure}
+}
+
+
+\newcommand*{\mot1}[1][T1 measurement of mineral oil using the two-pulse method]{
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_T1.pgf}}
+    \caption{ #1 }
+    \label{fig:mo_t1}
+  \end{figure}
+}
+
+\newcommand*{\moSE}[1][T2 measurement of mineral oil using the spin-echo pulse sequence]{
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_spinEcho.pgf}}
+    \caption{ #1 }
+    \label{fig:mo_se}
+  \end{figure}
+}
+
+\newcommand*{\moCP}[1][]{
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_carlPurcell.pgf}}
+    \caption{T2 measurement of  using the Carl-Purcell pulse sequence }
+    \label{fig:mo_cp}
+  \end{figure}
+}
+
+\newcommand*{\mot2}[1][]{
+  \begin{figure}[h]
+    \resizebox{0.45\textwidth}{!}{\input{figures/mineral_oil_T2.pgf}}
+    \caption{T2 measurement of Mineral oil using the Meiboom-Gill pulse sequence }
+    \label{fig:mo_t2}
+  \end{figure}
+}
+
+
+
+\endinput
