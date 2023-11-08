@@ -117,31 +117,14 @@ State University of New York at Buffalo\\Department of Physics
   \end{gather}
 
 
-  Solving this system gives a simple exponential, with a characteristic time constant \tg that defines the spin-spin relaxation time constant. However, equation~\ref{eq:mzt2_wrong} is difficult to measure experimentally as there is some loss of the transverse magnetization due to stochastic fluctuations in the local nuclear fields. As a result the spin echo is typically measured instead (equation~\ref{eq:mzt2}). 
+  Solving this system gives a simple exponential, with a characteristic time constant \tg that defines the spin-spin relaxation time constant (eq~\ref{eq:mzt2_wrong}). However, the signal due to the pulse is difficult to measure experimentally as there is some loss of the transverse magnetization due to stochastic fluctuations in the local nuclear fields. ~\cite{manual} As a result the spin echo is typically measured instead (equation~\ref{eq:mzt2}). 
 
   \begin{gather}
-    M_z(t) = M_0  e^\frac{-t}{T_2}  \label{eq:mzt2_wrong}\\
-    M_z(t) = M_0  e^\frac{-2\tau}{T_2}  \label{eq:mzt2}
+    M_{x,y}(t) = M_0  e^\frac{-t}{T_2}  \label{eq:mzt2_wrong}\\
+    M_{x,y}(2\tau) = M_0  e^\frac{-2\tau}{T_2}  \label{eq:mzt2}
   \end{gather}
 
   The spin echo is related to how the spins dephase and rephase. Once the system is allowed to evolve the nuclear spins can precess in any direction as a result the measured signal is lost. If the spins are pulsed with a RF wave, they can be forced to realign themselves. This realignment and subsequent thermalization is the spin echo. In order to probe this various pulse sequences are used to coax the nuclear spins into behaving as desired.  
-
-\subsection*{Pulse Sequences}
-
-
-  Broad intro with applications thisi s a test of figure reference look at fig
-
-  basics of physics i.e. nucelar spin and magnetic field alignment
-
-\subsubsection*{T1 sequence}
-
-
-
-\subsubsection*{spin echo}
-
-\subsubsection*{CP method}
-
-\subsubsection*{MG method}
 
 
 \section*{Experimental }
@@ -150,7 +133,7 @@ State University of New York at Buffalo\\Department of Physics
 
     \begin{figure}[h]
       \includegraphics[width=0.4 \textwidth]{figures/block_diagram.png}
-      \caption{Block diagram of experimental set up.}
+      \caption{Block diagram of experimental set up.\cite{manual}}
       \label{fig:block}
     \end{figure}
 
@@ -159,21 +142,27 @@ State University of New York at Buffalo\\Department of Physics
     
     The \textbf{pulse programer} outputs pulses that are about 4V with a rise time of 15ns. The length of these pulses can be controlled with the A-width or B-width knobs and ranges from 1-30$\mu$s. The two knobs exists because it is able to program the number of pulses. Its capable of producing 1 A-pulse and between 0-99 B-pulses for a maximum of 100 pulses. It also can set the delay time ($\tau$) between pulses. This is done using the dial switches between the pulse width knobs.  If there are more than one B-pulses then the delay between the B-pulses is 2$\tau$. The repetition time knobs in the center of the module decide how long to wait before starting the next pulse train. 
     
+    \begin{figure}[h]
+      \includegraphics[width=0.48 \textwidth]{figures/threemods.jpg}
+      \caption{Left to right: The spectrometer's receiver, pulse programer, and RF synthesized oscillator/amplifier/mixer modules.\cite{manual}}
+      \label{fig:threemods}
+    \end{figure}
+
+
+    The \textbf{RF synthesized oscillator}, \textbf{RF amplifier}, and \textbf{mixer} are all part of one module. For the most part this module sends and receives signals. There are two tunable parameters in this module though. The first is the ability to adjust the transmitted frequency using the frequency adjust knob. The second is a switch that allows the user to turn on the MG corrections. 
     
-  
-    
-    
-    P1: block diagram and overview of set usepackage
-    
-    P2: 3module system
-
-    p3: sample holder
-
-    p4: oscilloscope
+    The \textbf{receiver} is the last module. It picks up the signal from the sample probe. The blanking switch tells the receiver to ignore the part of the output signal that comes from the excitation pulse. This is generally kept on. The gain knob controls the output to input signal ratio, this acts as a form of noise control. The time constant knob controls the RC time constant of the detector output. It also removes noise but can also distort the desired signal if its too high. The final knob is the tuning knob which tunes the receiver to the first stage of the amplifier.~\cite{manual}
 
 
-Discribe 3 module system,  oscilloscope. 
+    \begin{figure}[h]
+      \includegraphics[width=0.4 \textwidth]{figures/probe.jpg}
+      \caption{NMR Sample probe.\cite{manual}}
+      \label{fig:probe}
+    \end{figure}
 
+    The sample probe is comprised of 5 major components (fig~\ref{fig:probe}). First there is the casing which houses the permanent ferromagnet. Secondly, there is a center region where the sample is held. The third component are the transmitter Helmholtz coils. These are made of two induction coils perpendicular to both the sample vial and the permanent magnet. The receiver coils are wrapped around the sample vial. The impedance of this induction coil changes with respect to the magnetization of the sample. When a component of the magnetization vector passes through the area inclosed by loop, it acts as a magnetic flux that increases or decreases the impedance. The final component are the sample placement dials on the outside of the housing. 
+
+    The final component of the experimental set up is the oscilloscope. This instrument served as the screen where our data was shown. In order to ensure that the signal appeared in the same spot of the screen, the oscilloscope received a trigger signal from the pulse generator. Additionally to ensure that the data is easily readable its imporant to set the voltage (y-axis) to either 1 or 2 V using the yellow and/or blue vertical scale knobs. The horizontal scale knob controls how much time a single box on the oscilloscope grid is. 
 
 \subsection*{Procedure}
 
@@ -200,7 +189,13 @@ Discribe 3 module system,  oscilloscope.
         \label{fig:beats}
     \end{figure}
 
-    As the magnet is $\sim 0.35$ Tesla, the resonant frequency will be around 15MHz. To find resonant frequency the frequency adjust knob is rotated until the mixer out spectra on the oscilloscope doesn't show any ``beats''. If the frequency is incorrect the displayed pulse will have multiple peaks within a single pulse, this is known as a beat (figure~\ref{fig:beats}). The resonance condition is when there is a single clean line that outlines a pulse or if it is perfectly flat. 
+    \begin{figure}
+      \includegraphics[width= 0.45\textwidth]{figures/FID-2.png}
+      \caption{Single Pulse Free Induction Decay (FID) when out of resonance.}
+      \label{fig:fid}
+  \end{figure}
+
+    As the magnet is $\sim 0.35$ Tesla, the resonant frequency will be around 15MHz. To find resonant frequency the frequency adjust knob is rotated until the mixer out spectra on the oscilloscope doesn't show any ``beats''. If the frequency is incorrect the displayed pulse will have multiple peaks within a single pulse, this is known as a beat (figure~\ref{fig:beats}). The resonance condition is when there is a single clean line that outlines a pulse or if it is perfectly flat (fig~\ref{fig:fid}). 
 
     Taking these parameters into account in order to acquire a single pulse FID of mineral oil the spectrometer must be set to output only the A-pulse, with a width of $\sim 20\%$, and a repetition time of 500m. From there a single clean pulse was found by tuning the frequency to 15.42707 MHz. A screenshot of the oscilloscope was taken. 
 
@@ -322,7 +317,7 @@ Discribe 3 module system,  oscilloscope.
     The \tc[2] data for all the different pulse sequences were fitted using equation~\ref{eq:mzt2} where the `$+c$' is from the oscilloscope offset.
     
     \begin{gather*}
-        M_z(t) = M_0  e^\frac{-2t}{T_1} + c \tag{\ref{eq:mzt2} revisted}
+        M_{x,y}(2\tau) = M_0  e^\frac{-2\tau}{T_1} + c \tag{\ref{eq:mzt2} revisted}
     \end{gather*}
 
 
@@ -354,7 +349,7 @@ Discribe 3 module system,  oscilloscope.
 
       The values for \tc[2] ranged from $250 \pm 20$ ms for the 5 mM solution to $2.0 \pm 1$ ms for the 1 M solution. This shows that the \tg values followed the same trend as the \tc values, meaning that as the concentration of \cuso increased the spin-spin relaxation time decreased (fig~\ref{fig:sumt2}). This is explained by the presence of a large electronic magnetic moment in the form of the Cu(II) paramagnetic ion.  
 
-      \begin{figure}[b]
+      \begin{figure}[]
         \resizebox{0.45\textwidth}{!}{\input{figures/summery_t2.pgf}}
         \caption{Overlay of all \cuso \tg measurements. }
         \label{fig:sumt2}
@@ -427,6 +422,150 @@ Discribe 3 module system,  oscilloscope.
 
 \section*{Appendix}
 
+
+
+  
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/mineral_oil_T1.pgf}}
+  \caption{T1 measurement of mineral oil using the two-pulse method }
+  \label{figAp:mo_t1}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/mineral_oil_spinEcho.pgf}}
+  \caption{T2 measurement of mineral oil using the spin-echo pulse sequence }
+  \label{figAp:mo_se}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/mineral_oil_carlPurcell.pgf}}
+  \caption{T2 measurement of  using the Carl-Purcell pulse sequence }
+  \label{figAp:mo_cp}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/mineral_oil_T2.pgf}}
+  \caption{T2 measurement of Mineral oil using the Meiboom-Gill pulse sequence }
+  \label{figAp:mo_t2}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% CuSo4 T1 %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_0d005_T1.pgf}}
+  \caption{T1 measurement of 0.005 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
+  \label{figAp:0d005_t1}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_0d01_T1.pgf}}
+  \caption{T1 measurement of 0.01 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
+  \label{figAp:0d01_t1}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_0d05_T1.pgf}}
+  \caption{T1 measurement of 0.05 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
+  \label{figAp:0d05_t1}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_0d1_T1.pgf}}
+  \caption{T1 measurement of 0.1 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
+  \label{figAp:0d1_t1}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_0d2_T1.pgf}}
+  \caption{T1 measurement of 0.2 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
+  \label{figAp:0d2_t1}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_0d5_T1.pgf}}
+  \caption{T1 measurement of 0.5 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using thetwo-pulse method }
+  \label{figAp:0d5_t1}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_1d0_T1.pgf}}
+  \caption{T1 measurement of 1.0 M  CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the two-pulse method }
+  \label{figAp:1d0_t1}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% CuSo4 T2 %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_0d005_T2.pgf}}
+  \caption{T2 measurement of 0.005 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
+  \label{figAp:0d005_t2}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_0d01_T2.pgf}}
+  \caption{T2 measurement of 0.01 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
+  \label{figAp:0d01_t2}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_0d05_T2.pgf}}
+  \caption{T2 measurement of 0.05 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
+  \label{figAp:0d05_t2}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_0d1_T2.pgf}}
+  \caption{T2 measurement of 0.1 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
+  \label{figAp:0d1_t2}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_0d2_T2.pgf}}
+  \caption{T2 measurement of 0.2 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
+  \label{figAp:0d2_t2}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_0d5_T2.pgf}}
+  \caption{T2 measurement of 0.5 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
+  \label{figAp:0d5_t2}
+\end{figure}
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_1d0_T2.pgf}}
+  \caption{T2 measurement of 1.0 M CuSO$_{4} \boldsymbol{\cdot} $H$_2$O using the Meiboom-Gill pulse sequence }
+  \label{figAp:1d0_t2}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% CuSo4 T1 %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{figure}[h]
+  \resizebox{0.75\textwidth}{!}{\input{figures/CuSO4_linear.pgf}}
+  \caption{Inverse Time constants of CuSO$_{4} \boldsymbol{\cdot} $H$_2$O vs Molarity. Here 1/T$_i$ are proportional to $\gamma^2_p \mu^2_{eff} N_{ion} \eta / NkT$. Where $N_{ion}$ is the number density and is related to Molarity by $N_{ion} = N_A M$ }
+  \label{figAp:cu_linear}
+\end{figure}
+
+
+\begin{figure}[h]
+\resizebox{0.75\textwidth}{!}{\input{figures/summery_t1.pgf}}
+\caption{Overlay of all \cuso \tc measurements. }
+\label{figAp:sumt2}
+\end{figure}
+
+
+\begin{figure}[h]
+\resizebox{0.75\textwidth}{!}{\input{figures/summery_t2.pgf}}
+\caption{Overlay of all \cuso \tg measurements. }
+\label{figAp:sumt2}
+\end{figure}
 
 
 \end{document}

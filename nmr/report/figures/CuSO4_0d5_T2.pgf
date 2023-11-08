@@ -507,7 +507,7 @@
 \definecolor{textcolor}{rgb}{0.150000,0.150000,0.150000}%
 \pgfsetstrokecolor{textcolor}%
 \pgfsetfillcolor{textcolor}%
-\pgftext[x=1.286745in, y=1.755015in, left, base]{\color{textcolor}\rmfamily\fontsize{20.000000}{24.000000}\selectfont M\(\displaystyle _z\)(t) = 7.36\(\displaystyle exp[\frac{-2t}{T_2}]+\)-1.55}%
+\pgftext[x=1.286745in, y=1.755015in, left, base]{\color{textcolor}\rmfamily\fontsize{20.000000}{24.000000}\selectfont M\(\displaystyle _{x,y}\)(t) = 7.36\(\displaystyle exp[\frac{-2t}{T_2}]+\)-1.55}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \definecolor{textcolor}{rgb}{0.150000,0.150000,0.150000}%
